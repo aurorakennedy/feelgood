@@ -1,5 +1,5 @@
 package feelgood;
-
+//ta inn input, skrive til fil eller lagre til globale variabler elns
 import java.util.Date;
 
 
@@ -14,15 +14,12 @@ public class Person {
 
     // Konstruktør 
     public Person(String name, Date bday, String gender){
-
         this.name = name; 
         this.bday = bday;
         this.gender = gender; 
-
-
     }
 
-    // Lagre atributer til fil 
+    // Lagre attributter til fil 
 
 
 
