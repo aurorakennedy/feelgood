@@ -1,9 +1,9 @@
 package feelgood;
-//ta inn input, skrive til fil eller lagre til globale variabler elns
+//ta inn input, skrive til fil eller lagre til globale variabler elns (hvis flere profiler: lage nye filer hvor navnet på personen brukes, sjekke om navn finnes før man lager)
 import java.util.Date;
 
 
-    // Lagre person - Skal vi ha muligheen til å lage ny person - reste alt 
+    // Lagre person - Skal vi ha muligheten til å lage ny person - reste alt 
     // Ta inn repiterende info 
 
 public class Person {
