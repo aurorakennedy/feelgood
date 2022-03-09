@@ -1,3 +1,4 @@
+
 package feelgood;
 
 import java.util.ArrayList;
@@ -20,13 +21,12 @@ public class Day {
 //Konstruktør
 public Day(int water){
     this.water=water;
-    
+    vannListe.add(water); 
 }
 
 //getter
 
-public int getWater() {
-    vannListe.add(water); 
+public int getWater(){
     return water; 
 }
 
@@ -56,10 +56,15 @@ public float getMath() {
     return math;
 }
 
+  @Override
+    public String toString() {
+        return String.valueOf(vannListe); 
+    }
 
 public static void main(String[] args) {
     Day day1 = new Day(3);
     Day day2 = new Day(5); 
-    System.out.println(Arrays.toString(vannListe.toArray()));
+    System.out.println(day1);
+    System.out.println(day2);
 }
 }
