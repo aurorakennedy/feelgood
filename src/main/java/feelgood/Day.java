@@ -1,4 +1,9 @@
 package feelgood;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 //Day- ta inn input, skrive til fil
 public class Day {
     private int water;
@@ -9,15 +14,20 @@ public class Day {
     private float math;
 
 
+    private ArrayList<Integer> vannListe = new ArrayList<Integer>();
+
+
 //Konstruktør
 public Day(int water){
     this.water=water;
+    
 }
 
 //getter
 
 public int getWater() {
-    return water;
+    vannListe.add(water); 
+    return water; 
 }
 
 
@@ -47,4 +57,9 @@ public float getMath() {
 }
 
 
+public static void main(String[] args) {
+    Day day1 = new Day(3);
+    Day day2 = new Day(5); 
+    System.out.println(Arrays.toString(vannListe.toArray()));
+}
 }
