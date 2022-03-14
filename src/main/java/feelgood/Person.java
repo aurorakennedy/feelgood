@@ -3,6 +3,13 @@ package feelgood;
 import java.util.Date;
 
 
+
+    //Liste med alle day 
+    // Dag må være knyttet til person på en eller annen måte 
+    // ArrayList Answers , lagre days i lista . Appender day til lista i person objektet 
+    // Så når du lagrer personobjekte ditt vil alle feltene bli lagret 
+
+
     // Lagre person - Skal vi ha muligheten til å lage ny person - reste alt 
     // Ta inn repiterende info 
 
