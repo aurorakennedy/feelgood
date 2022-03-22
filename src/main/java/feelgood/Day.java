@@ -11,7 +11,6 @@ public class Day {
     private String compliments;
     private double sleep;
     private String appreciation;
-    private String emoji;
     private float math;
 
 
@@ -44,11 +43,6 @@ public double getSleep() {
 
 public String getAppreciation() {
     return appreciation;
-}
-
-
-public String getEmoji() {
-    return emoji;
 }
 
 

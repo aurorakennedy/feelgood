@@ -1,10 +1,13 @@
 package feelgood;
 
+import javafx.fxml.FXML;
+
 public class FeelGoodController {
     //overføres data fra fxml til variabler vi kan bruke i andre klasser
     //starte metoder i de andre klassene
     //som en main-metode
 
+<<<<<<< HEAD
     private FeelGoodApp feelGoodApp;  //Kan hende det skal være day og person her ikke Feelgoodapp
 
     // Kobler opp FXML med controlleren 
@@ -19,4 +22,11 @@ public class FeelGoodController {
     }
 
 
+=======
+    @FXML
+    private void calculateSleep() {
+        // gjør faktisk utregning..
+        System.out.println("calculating sleep");
+    }
+>>>>>>> 552adfb81ea0ade85ab2216ab05544ae4bfdd247
 }
