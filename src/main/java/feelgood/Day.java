@@ -25,13 +25,18 @@ public Day(int water){
 
 //getter
 
+public list getVannListe(){
+    return vannListe;
+}
+
 public int getWater(){
-    return water; 
+    return water;
 }
 
 
 
 public String getCompliments() {
+    
     return compliments;
 }
 
