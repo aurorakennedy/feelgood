@@ -26,12 +26,12 @@
       </Pane>
       <Pane prefHeight="400.0" prefWidth="244.0">
          <children>
-            <ImageView fitHeight="265.0" fitWidth="200.0" layoutX="48.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="sleepButton1" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#calculateSleep" text="Få oppsummering" />
+            <ImageView fitHeight="285.0" fitWidth="200.0" layoutX="32.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/avatar.png" />
                </image>
             </ImageView>
-            <Button fx:id="sleepButton1" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#calculateSleep" text="Få oppsummering" />
          </children>
       </Pane>
    </children>

@@ -11,7 +11,7 @@ public class FeelGoodApp extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
-    } //hei
+    } 
 
     @Override
     public void start(Stage primaryStage) throws IOException {

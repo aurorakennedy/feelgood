@@ -12,7 +12,7 @@ public class FeelGoodController {
     // Kobler opp FXML med controlleren 
 
     @FXML 
-    public idNavnHer itemNavn; //Bytt ut med id 
+    //public idNavnHer itemNavn; //Bytt ut med id 
 
     // Trenger ikke konstruktør 
     
