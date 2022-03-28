@@ -11,22 +11,22 @@
    <children>
       <Pane layoutX="244.0" prefHeight="400.0" prefWidth="356.0">
          <children>
-            <Button fx:id="sleepButton" layoutX="190.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#calculateSleep" text="Lagre svar (get sleep)" />
+            <Button fx:id="sleepButton" layoutX="190.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#calculate" text="Lagre svar (get sleep)" />
             <Label layoutX="14.0" layoutY="25.0" prefHeight="17.0" prefWidth="196.0" text="Hvor mye har du drukket i dag? " textFill="#2487e4" />
-            <TextField layoutX="178.0" layoutY="48.0" promptText="Antall glass" />
+            <TextField fx:id="glassVann" layoutX="178.0" layoutY="48.0" promptText="Antall glass" />
             <Label layoutX="14.0" layoutY="83.0" prefHeight="17.0" prefWidth="323.0" text="Har du sagt noe fint til noen i dag? Skriv komplementetene" textFill="#f2252f" />
-            <TextField layoutX="178.0" layoutY="115.0" promptText="Skill komplimentene med komma" />
+            <TextField fx:id="komplement" layoutX="178.0" layoutY="115.0" promptText="Skill komplimentene med komma" />
             <Label layoutX="14.0" layoutY="155.0" prefHeight="17.0" prefWidth="196.0" text="Hvor mange timer sov du i natt?" textFill="#85da85" />
-            <TextField layoutX="178.0" layoutY="181.0" promptText="Antall timer" />
+            <TextField fx:id="timerSovn" layoutX="177.0" layoutY="186.0" promptText="Antall timer" />
             <Label layoutX="14.0" layoutY="212.0" prefHeight="17.0" prefWidth="211.0" text="Hvem har du satt ekstra pris på i dag?" textFill="#ee9e0a" />
-            <TextField layoutX="178.0" layoutY="241.0" promptText="Et navn" />
+            <TextField fx:id="verdigNavn" layoutX="178.0" layoutY="241.0" promptText="Et navn" />
             <Label layoutX="14.0" layoutY="277.0" prefHeight="17.0" prefWidth="196.0" text="Hva er 8+19?" textFill="#3ceb3c" />
-            <TextField layoutX="178.0" layoutY="306.0" promptText="Skriv et tall" />
+            <TextField fx:id="matteSum" layoutX="178.0" layoutY="306.0" promptText="Skriv et tall" />
          </children>
       </Pane>
       <Pane prefHeight="400.0" prefWidth="244.0">
          <children>
-            <Button fx:id="sleepButton1" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#calculateSleep" text="Få oppsummering" />
+            <Button fx:id="calculate" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#calculate" text="Få oppsummering" />
             <ImageView fitHeight="285.0" fitWidth="200.0" layoutX="32.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/avatar.png" />

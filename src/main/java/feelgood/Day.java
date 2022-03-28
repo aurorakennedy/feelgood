@@ -8,54 +8,31 @@ public class Day {
     private double sleep;
     private String appreciation;
     private double math;
-    private Summary summary; 
+    //private Summary summary; 
+
+
+    public Day(String water, String compliments, String sleep, String appreciation, String math){
+        this.water= Double.parseDouble(water);
+        this.compliments = compliments; 
+        this.sleep= Double.parseDouble(sleep);
+        this.appreciation = appreciation;
+        this.math= Double.parseDouble(math);
+    }
     
 
-//getter&settere
-
-public void setWater(double water) {
-    //validering
-    this.water = water;
-    summary.addWater(water);
-}
+// -- Gettere -- 
 
 public double getWater(){
     return water;
 }
-
-
-public void setCompliments(String compliments) {
-    //validering
-    this.compliments = compliments;
-    //summary.addCompliments(water);
-}
 public String getCompliments() {
-    
     return compliments;
 }
-
-
-public void setSleep(double sleep) {
-    this.sleep = sleep;
-}
-
 public double getSleep() {
     return sleep;
 }
-
-
-
-public void setAppreciation(String appreciation) {
-    this.appreciation = appreciation;
-}
 public String getAppreciation() {
     return appreciation;
-}
-
-
-
-public void setMath(double math) {
-    this.math = math;
 }
 public double getMath() {
     return math;
