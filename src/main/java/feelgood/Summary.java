@@ -60,15 +60,6 @@ public class Summary {
 
         for (int i=0; i < days.size(); i++){
             flestGanger = days.get(0).getCompliments(); 
-            if flestGanger
-
-
-            String komplement = days.get(i).getCompliments(); 
-            if(komplement.length() > longest.length()){
-                longest = komplement;
-            }
-        results.add(longest); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
-         }
 
 
         // -- Utregning math --
