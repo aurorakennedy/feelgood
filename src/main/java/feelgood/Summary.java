@@ -75,8 +75,8 @@ public class Summary {
         //andre funksjoner vi kan bruke igjen
 
 
-        return results;
         }
+        return results;
     }
 /* Kan vi gjøre det til mer generelle metoder??? 
     private void glassesToLiters(){
