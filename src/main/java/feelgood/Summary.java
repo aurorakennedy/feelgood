@@ -1,6 +1,8 @@
 package feelgood;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 //lese fra fil, gjøre beregninger, output
 public class Summary {
@@ -56,10 +58,17 @@ public class Summary {
 
 
         // -- Utregning appreciation --
-        String flestGanger;
-
+        ArrayList<String> bestevennListe = new ArrayList<>();
+        Set<String> bestevennSet = new HashSet<String> ();
         for (int i=0; i < days.size(); i++){
-            flestGanger = days.get(0).getCompliments(); 
+            bestevennListe.add(days.get(i).getAppreciation());
+            bestevennSet.add(days.get(i).getAppreciation());
+            if (bestevennSet.size() < bestevennListe.size()){
+                //da finnes det duplikat og vi må finne den som er repetert oftest
+            }
+            else{
+                //returner random person fra liste/set
+            }
 
 
         // -- Utregning math --
