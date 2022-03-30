@@ -66,6 +66,7 @@ public class Summary {
             bestevennSet.add(days.get(i).getAppreciation());
             if (bestevennSet.size() < bestevennListe.size()){
                 //da finnes det duplikat og vi må finne den som er repetert oftest
+                // [snill, søt, morsom]
                 String element = ""; 
                 int count = 0; 
                 for(int j = 0; j <bestevennListe.size(); j++){
@@ -75,12 +76,12 @@ public class Summary {
                         if(bestevennListe.get(i).equals(tempElement)){ //går gjennom alle og sjekker om de er like til tempelement 
                             tempCount += 1; 
                         }
-                    if ( tempCount > count){ // skjønner ikke helt dette, tror det lagrer tempElement some element hvis den har større count 
+                    if ( tempCount > count){ // tror det lagrer tempElement some element hvis den har større count 
                         element = tempElement; 
                         count = tempCount; 
                     }
                     }
-                results.add(element); 
+                    results.add(element); 
                 }
             }
             else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
