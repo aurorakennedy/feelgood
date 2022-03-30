@@ -2,6 +2,7 @@ package feelgood;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 //lese fra fil, gjøre beregninger, output
@@ -65,9 +66,31 @@ public class Summary {
             bestevennSet.add(days.get(i).getAppreciation());
             if (bestevennSet.size() < bestevennListe.size()){
                 //da finnes det duplikat og vi må finne den som er repetert oftest
+                String element = ""; 
+                int count = 0; 
+                for(int j = 0; j <bestevennListe.size(); j++){
+                    String tempElement = bestevennListe.get(i); // elemente vi er på nå
+                    int tempCount = 0; //for å telle elementene 
+                    for( int p=0; p<bestevennListe.size(); p++ ){
+                        if(bestevennListe.get(i).equals(tempElement)){ //går gjennom alle og sjekker om de er like til tempelement 
+                            tempCount += 1; 
+                        }
+                    if ( tempCount > count){ // skjønner ikke helt dette, tror det lagrer tempElement some element hvis den har større count 
+                        element = tempElement; 
+                        count = tempCount; 
+                    }
+                    }
+                results.add(element); 
+                }
             }
-            else{
+            else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
                 //returner random person fra liste/set
+                Random random = new Random(); /// importerer her random 
+                int randomeNumber = random.nextInt(bestevennListe.size()); 
+                // nextInt er en funskjon fra nett, litt usikker på hva den gjør men tror den bare sier ett tall i listen sin størrelse 
+                String komplimentResult = bestevennListe.get(randomeNumber);
+                // her finner vi da ett kompliment i listen 
+                results.add(komplimentResult);         
             }
 
 
