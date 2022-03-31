@@ -23,9 +23,16 @@ public class FeelGoodController {
     }
 
     @FXML
-    private void calculate() {
+    private void lagreSvar() {
+        System.out.println("lagreSvar kjører");
         summary.add(glassVann.getText(), komplement.getText(), timerSovn.getText(), verdigNavn.getText(), matteSum.getText()); //henter info fra tekstfelt og sender til add().
-        System.out.println(summary.calculations());
         //summary.results.clear();
     }
+
+    @FXML
+    private void oppsummering(){
+        System.out.println("oppsummering kjører");
+        System.out.println(summary.calculations());
+    }
+    
 }

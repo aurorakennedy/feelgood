@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-//lese fra fil, gjøre beregninger, output
 public class Summary {
 
     private ArrayList<Day> days = new ArrayList<Day>();
@@ -18,24 +17,18 @@ public class Summary {
     }
 
     public ArrayList<String> calculations(){     // Gjør alle utregninger 
-
         // -- Utregning av vann -- 
         double glassesOfWater = 0; 
         double litersOfWater; 
-
         for (int i=0; i < days.size(); i++){  // i - itererer gjennom dagene
-
             glassesOfWater += days.get(i).getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
-
-
         }
-        litersOfWater = glassesOfWater*0.2; // f gjør 0.2 (var en double) til en float 
+        litersOfWater = glassesOfWater*0.2; 
         results.add(""+litersOfWater); //Teit men samme som .toString()
 
 
         // -- Utregning compliments --
         String longest = days.get(0).getCompliments(); 
-
         for (int i=0; i < days.size(); i++){
             String komplement = days.get(i).getCompliments(); 
             if(komplement.length() > longest.length()){
@@ -44,12 +37,11 @@ public class Summary {
         results.add(longest); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
          }
 
-        
+
         // -- Utregning sleep --
         double hoursSleep = 0;
         double daysSleep;
         double modulo; 
-
         for (int i=0; i < days.size(); i++){  // i - itererer gjennom dagene
             hoursSleep += days.get(i).getSleep();  //går inn i enkelt dag-->kjører getSleep funksjonen for denne dagen og legger til hoursSleep
         }
@@ -93,7 +85,6 @@ public class Summary {
                 // her finner vi da ett kompliment i listen 
                 results.add(komplimentResult);         
             }
-
 
         // -- Utregning math --
         //andre funksjoner vi kan bruke igjen

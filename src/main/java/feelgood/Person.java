@@ -1,4 +1,6 @@
 package feelgood;
+import java.io.File;
+import java.io.PrintWriter;
 //ta inn input, skrive til fil eller lagre til globale variabler elns (hvis flere profiler: lage nye filer hvor navnet på personen brukes, sjekke om navn finnes før man lager)
 import java.util.Date;
 
@@ -15,20 +17,47 @@ import java.util.Date;
 
 public class Person {
     private String name;
-    private Date bday; 
-    private String gender; //Woke alternativer!!
+    //private Date bday; 
+    //private String gender;
 
 
     // Konstruktør 
-    public Person(String name, Date bday, String gender){
-        this.name = name; 
-        this.bday = bday;
-        this.gender = gender; 
+    public Person(String name){
+        if (name.length()>2 && name.length()<15){
+            this.name = name;
+        }
+        else{
+            throw new IllegalArgumentException("Navnet må være på mellom 2 og 15 bokstaver.");
+        }
+       
     }
 
     // Lagre attributter til fil 
 
 
+
+    public void lagreBruker(navn){
+        File fil = new File(navn);
+        if (fil.createNewFile()){
+            //opprett ny bruker
+        } else {
+            //finn data for eksisterende bruker
+        }
+    }
+
+//fra kort-forklart
+    public void writeToFile(String filename){
+        try{
+            PrintWriter writer = new PrintWriter(filename);
+            for (Day day: days){
+                writer.println(day.getWater());
+            }
+            writer.flush();
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     
 

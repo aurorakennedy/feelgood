@@ -11,7 +11,7 @@
    <children>
       <Pane layoutX="244.0" prefHeight="400.0" prefWidth="356.0">
          <children>
-            <Button fx:id="sleepButton" layoutX="190.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#calculate" text="Lagre svar (get sleep)" />
+            <Button fx:id="lagreSvar" layoutX="190.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#lagreSvar" text="Lagre svar" />
             <Label layoutX="14.0" layoutY="25.0" prefHeight="17.0" prefWidth="196.0" text="Hvor mye har du drukket i dag? " textFill="#2487e4" />
             <TextField fx:id="glassVann" layoutX="178.0" layoutY="48.0" promptText="Antall glass" />
             <Label layoutX="14.0" layoutY="83.0" prefHeight="17.0" prefWidth="323.0" text="Har du sagt noe fint til noen i dag? Skriv komplementetene" textFill="#f2252f" />
@@ -26,7 +26,7 @@
       </Pane>
       <Pane prefHeight="400.0" prefWidth="244.0">
          <children>
-            <Button fx:id="calculate" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#calculate" text="Få oppsummering" />
+            <Button fx:id="oppsummering" layoutX="54.0" layoutY="354.0" mnemonicParsing="false" onMouseClicked="#oppsummering" text="Få oppsummering" />
             <ImageView fitHeight="171.0" fitWidth="134.0" layoutX="122.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/avatar.png" />
