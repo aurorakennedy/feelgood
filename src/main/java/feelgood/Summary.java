@@ -8,7 +8,7 @@ import java.util.Set;
 public class Summary {
 
     private ArrayList<Day> days = new ArrayList<Day>();
-    private ArrayList<String> results = new ArrayList<>();
+    
 
     //lager Day-objekter
     public void add(String water,String compliments, String sleep, String appreciation, String math){ 
@@ -16,29 +16,48 @@ public class Summary {
         days.add(day); 
     }
 
-    public ArrayList<String> calculations(){     // Gjør alle utregninger 
-        // -- Utregning av vann -- 
+    // -- Legger alt inn i listen results -- 
+     public ArrayList<String> calculations(){     // Gjør alle utregninger 
+        ArrayList<String> results = new ArrayList<>(); // da slipper vi å cleare den 
+
+        //i denne funksjonen: hvis days.size()==0 -->avslutter metoden
+        
+        results.add(""+sumWater()); 
+        results.add(longestCompliment()); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
+        results.add(sleep());
+        results.add(appreciation()); 
+
+        return results;
+        }
+        
+    
+   
+    // -- Utregning av vann -- 
+    private double sumWater(){
         double glassesOfWater = 0; 
         double litersOfWater; 
         for (int i=0; i < days.size(); i++){  // i - itererer gjennom dagene
             glassesOfWater += days.get(i).getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
         }
         litersOfWater = glassesOfWater*0.2; 
-        results.add(""+litersOfWater); //Teit men samme som .toString()
+        return litersOfWater; 
+    }
 
-
-        // -- Utregning compliments --
-        String longest = days.get(0).getCompliments(); 
+    // -- Utregning compliments --
+    private String longestCompliment(){
+        String longest = "";
         for (int i=0; i < days.size(); i++){
             String komplement = days.get(i).getCompliments(); 
             if(komplement.length() > longest.length()){
                 longest = komplement;
-            }
-        results.add(longest); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
-         }
+            } 
+        }
+    return longest;
+    }
 
 
-        // -- Utregning sleep --
+    // -- Utregning sleep --
+    private String sleep(){
         double hoursSleep = 0;
         double daysSleep;
         double modulo; 
@@ -47,10 +66,13 @@ public class Summary {
         }
         daysSleep = Math.floor(hoursSleep/24);
         modulo = hoursSleep%24;
-        results.add(""+daysSleep+" + "+modulo);
-
-
-        // -- Utregning appreciation --
+        String sleep = (""+daysSleep+ " + " +modulo);
+        return sleep;
+}
+    
+        
+    // -- Utregning appreciation --
+    private String appreciation(){
         ArrayList<String> bestevennListe = new ArrayList<>();
         Set<String> bestevennSet = new HashSet<String> ();
         for (int i=0; i < days.size(); i++){
@@ -59,22 +81,23 @@ public class Summary {
             if (bestevennSet.size() < bestevennListe.size()){
                 //da finnes det duplikat og vi må finne den som er repetert oftest
                 // [snill, søt, morsom]
-                String element = ""; 
+                String bestevenn = ""; 
                 int count = 0; 
                 for(int j = 0; j <bestevennListe.size(); j++){
-                    String tempElement = bestevennListe.get(i); // elemente vi er på nå
+                    String midlertidigBestevenn = bestevennListe.get(i); // elemente vi er på nå
                     int tempCount = 0; //for å telle elementene 
                     for( int p=0; p<bestevennListe.size(); p++ ){
-                        if(bestevennListe.get(i).equals(tempElement)){ //går gjennom alle og sjekker om de er like til tempelement 
+                        if(bestevennListe.get(i).equals(midlertidigBestevenn)){ //går gjennom alle og sjekker om de er like til tempelement 
                             tempCount += 1; 
                         }
                     if ( tempCount > count){ // tror det lagrer tempElement some element hvis den har større count 
-                        element = tempElement; 
+                        bestevenn = midlertidigBestevenn; 
                         count = tempCount; 
                     }
                     }
-                    results.add(element); 
+                    
                 }
+                return bestevenn; 
             }
             else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
                 //returner random person fra liste/set
@@ -83,16 +106,22 @@ public class Summary {
                 // nextInt er en funskjon fra nett, litt usikker på hva den gjør men tror den bare sier ett tall i listen sin størrelse 
                 String komplimentResult = bestevennListe.get(randomeNumber);
                 // her finner vi da ett kompliment i listen 
-                results.add(komplimentResult);         
+                return komplimentResult;         
             }
-
-        // -- Utregning math --
-        //andre funksjoner vi kan bruke igjen
-
-
         }
-        return results;
-    }
+        return "Ingen dager registrert";
+        }
+
+
+        public String motivationalMessage() {
+            
+            return "Du var flink, du drakk " + calculations().get(0);
+        }
+
+    
+    // -- Utregning math --
+    //andre funksjoner vi kan bruke igjen
+   
 /* Kan vi gjøre det til mer generelle metoder??? 
     private void glassesToLiters(){
         
@@ -104,9 +133,6 @@ public class Summary {
 
 
 
-    public ArrayList<String> getResults() {
-        return results;
-    }
     
     //public String compliments(List complimentList){
         //få ordene fra listen inn i tooString
@@ -117,7 +143,7 @@ public class Summary {
     
 
     public static void main(String[] args) {
-        Summary summary=new Summary();
-        System.out.println(summary.getResults());
+        //Summary summary=new Summary();
+        //System.out.println(summary.getResults());
     }
 }

@@ -36,17 +36,17 @@ public class Person {
 
 
 
-    public void lagreBruker(navn){
+    /*public void lagreBruker(navn){
         File fil = new File(navn);
         if (fil.createNewFile()){
             //opprett ny bruker
         } else {
             //finn data for eksisterende bruker
         }
-    }
+    }*/
 
 //fra kort-forklart
-    public void writeToFile(String filename){
+   /* public void writeToFile(String filename){
         try{
             PrintWriter writer = new PrintWriter(filename);
             for (Day day: days){
@@ -58,7 +58,7 @@ public class Person {
             e.printStackTrace();
         }
     }
-
+*/
     
 
 }
