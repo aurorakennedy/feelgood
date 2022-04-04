@@ -115,7 +115,7 @@ public class Summary {
 
         public String motivationalMessage() {
             
-            return "Du var flink, du drakk " + calculations().get(0);
+            return "Du var flink, du drakk " + calculations().get(0) + "liter";
         }
 
     
