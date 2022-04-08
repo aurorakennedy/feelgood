@@ -1,5 +1,7 @@
 package feelgood;
 
+import java.io.File;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -13,13 +15,16 @@ public class FeelGoodController {
     // Trenger ikke konstruktør // Kobler opp FXML med controlleren 
 
     private Summary summary;
+    private FileDealer filedealer; 
     private Day day;
 
+
     @FXML
-    public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum;
+    public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn;
 
     @FXML
     private Text feedback;
+    
     
     
     public void initialize() {
@@ -35,6 +40,17 @@ public class FeelGoodController {
         glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear();
         
         
+    }
+
+    //** Kaos her nå men det er fordi funksjonen i FileDealer ikke er på plass enda */
+    @FXML
+    private void checkFile(){
+        System.out.println("Fil kjører, bra!");
+        System.out.println(brukernavn.getText());
+        // filNavn = brukernavn.getText();
+        //filedealer.finnFil(brukernavn.getText());
+        //filedealer.finnFil("Aurora");
+        //filedealer.readFile(brukernavn.getText());
     }
 
     @FXML

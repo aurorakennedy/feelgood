@@ -1,14 +1,55 @@
 package feelgood;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class FileDealer implements FileReadWrite {
 
+    
+
+    ArrayList<Day> readDays= new ArrayList<>();
+    
+    // ** Lagde konstroktøren så kunne sjekke i mainen 
+    // ** - vet ikke om det er nødvendig når vi får kobla den opp til controllern 
+    private String filename = ""; 
+
+    
+    public FileDealer(String filename){ 
+        this.filename = filename;
+    }
+
+
+    // ** Her prøver jeg å sjekke om filen funker eller ikke
+    // ** så dette på w3school, skal egentlig lage fil hvis den eksisterer, tror ikke dett funker enda 
+    // ** tanken er at her kan vi adde de to andre funskjonene read/write 
+    // ** trenger da bare å kalle på denne fubnksjonen i kontrollen 
+    public void finnFil(){
+        try{ 
+            File file = new File(this.filename, ".txt");
+            if (file.createNewFile()) {
+                System.out.println("Ny fil laget");
+            }
+            else{
+                System.out.println("Fil finnes");
+                //writeFile(filename)... noe sånt 
+            }
+        }
+        catch (IOException e){
+            System.out.println("Noe er feil");
+        }
+    }
+
     @Override
+    // ** NOE FEIL HER: leser ikke fil jeg har laget
     public ArrayList<Day> readFile(String filename) {
-        ArrayList<Day> readDays= new ArrayList<>();
+        // ** Satt listen uttafor for da har write tilgang til den også men vet ikke om det fucker det opp 
+        //ArrayList<Day> readDays= new ArrayList<>();
         
         Scanner scanner;
         try {
@@ -22,15 +63,33 @@ public class FileDealer implements FileReadWrite {
 
             
             }
-        } catch (Exception e) {
-            //TODO: handle exception
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: file 'filename' could not open");
+            System.exit(1);
         }
         return readDays;
     }
 
     @Override
+    // ** Funker halveis, sletter det som allerede står i filen/ adder ikke
+    // ** men kommer tom liste så den skriver noe til filen
     public void writeFile(String filename) {
-                
+        try{
+            PrintWriter outFile = new PrintWriter(filename);
+            outFile.println(readDays);
+            outFile.close();
+        }
+        catch (FileNotFoundException e){
+            System.err.println("feil");
+            System.exit(1);
+        }
     }
     
+
+    //** Prøver å teste og få alt til å funke med main metoden før tester med kontrolleren */
+    public static void main(String[] args) {
+        FileDealer filedealer = new FileDealer("Aurora");
+        //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
+        filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
+    }
 }
