@@ -52,8 +52,8 @@ public class FeelGoodController {
         // oppsummering.setHeaderText(null);
         // oppsummering.show();
         // oppsummering.setContentText(summary.motivationalMessage());
-        feedback.setText(summary.motivationalMessage() + "\n" + summary.motivationalMessage());
-        feedback.setFill(Color.AQUA);
+        feedback.setText(summary.motivationalMessage());
+        feedback.setFill(Color.BLUE);
 
     }
     

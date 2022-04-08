@@ -35,6 +35,9 @@ public class Person {
     // Lagre attributter til fil 
 
 
+    public String getName() {
+        return name;
+    }
 
     /*public void lagreBruker(navn){
         File fil = new File(navn);

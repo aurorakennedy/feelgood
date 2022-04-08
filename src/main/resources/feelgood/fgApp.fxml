@@ -41,9 +41,9 @@
       </Pane>
       <Pane layoutX="4.0" layoutY="399.0" prefHeight="250.0" prefWidth="596.0">
          <children>
-            <Text fx:id="feedback" fill="#61aefc" layoutX="35.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fyll ut skjemaet og få tilbakemeldinger her:" textAlignment="CENTER" wrappingWidth="526.0">
+            <Text fx:id="feedback" layoutX="27.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fyll ut skjemaet og få tilbakemeldinger her:">
                <font>
-                  <Font size="22.0" />
+                  <Font size="15.0" />
                </font>
             </Text>
          </children>

@@ -1,5 +1,6 @@
 package feelgood;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -65,10 +66,10 @@ public class Summary {
             hoursSleep += days.get(i).getSleep();  //går inn i enkelt dag-->kjører getSleep funksjonen for denne dagen og legger til hoursSleep
         }
         daysSleep = Math.floor(hoursSleep/24);
-        modulo = hoursSleep%24;
-        String sleep = (""+daysSleep+ " + " +modulo);
+        modulo = Math.round(hoursSleep%24);
+        String sleep = (""+daysSleep+ "," +modulo);
         return sleep;
-}
+    }
     
         
     // -- Utregning appreciation --
@@ -114,8 +115,8 @@ public class Summary {
 
 
         public String motivationalMessage() {
-            
-            return "Du var flink, du drakk " + calculations().get(0) + "liter";
+            String[] sleep = this.sleep().split(",");
+            return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + /*calculations().get(4) +*/ " riktige.";
         }
 
     
