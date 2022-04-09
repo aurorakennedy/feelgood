@@ -10,13 +10,19 @@ public class Day {
     private double math;
     //private Summary summary; 
 
-
+/*
     public Day(String water, String compliments, String sleep, String appreciation, String math){
         this.water= Double.parseDouble(water);
         this.compliments = compliments; 
         this.sleep= Double.parseDouble(sleep);
         this.appreciation = appreciation;
         this.math= Double.parseDouble(math);
+    }
+    */
+
+    public Day(String compliments, String appreciation){
+        this.compliments = compliments; 
+        this.appreciation = appreciation;
     }
     
 

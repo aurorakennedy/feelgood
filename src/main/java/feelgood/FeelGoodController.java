@@ -33,6 +33,11 @@ public class FeelGoodController {
 
     }
 
+    private String getFilename(){
+        String filename = this.brukernavn.getText();
+        return filename; 
+    }
+
     @FXML
     private void lagreSvar() {
         System.out.println("lagreSvar kjører");
@@ -42,11 +47,11 @@ public class FeelGoodController {
         
     }
 
-    //** Kaos her nå men det er fordi funksjonen i FileDealer ikke er på plass enda */
+    //** Kaos her nå men det er fordi funksjonen i FileDealer ikke er på plass */
     @FXML
     private void checkFile(){
         System.out.println("Fil kjører, bra!");
-        System.out.println(brukernavn.getText());
+        System.out.println(getFilename());
         // filNavn = brukernavn.getText();
         //filedealer.finnFil(brukernavn.getText());
         //filedealer.finnFil("Aurora");

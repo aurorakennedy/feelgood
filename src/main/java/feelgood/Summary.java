@@ -17,6 +17,8 @@ public class Summary {
         days.add(day); 
     }
 
+
+
     // -- Legger alt inn i listen results -- 
      public ArrayList<String> calculations(){     // Gjør alle utregninger 
         ArrayList<String> results = new ArrayList<>(); // da slipper vi å cleare den 
