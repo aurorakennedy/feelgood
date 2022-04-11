@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface FileReadWrite {
     //her skal alle mdetodene være som leser og skriver til fil
 
-    ArrayList<Day> readFile(String filename);
-    void writeFile(String filename);
+    public ArrayList<Day> readFile(String filename);
+    
+    public void writeFile(String filename, ArrayList<Day> writeDays);
 }

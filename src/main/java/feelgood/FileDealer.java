@@ -2,7 +2,7 @@ package feelgood;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -25,7 +25,9 @@ public class FileDealer implements FileReadWrite {
     }
 
     public static String getFilePath(String filename){
-        return FileDealer.class.getResource("saves/").getFile() + filename + ".txt";
+        //return FileDealer.class.getResource("saves/").getFile() + filename + ".txt";
+        //String name = FileDealer.class.getResource("C:/Users/auror/OneDrive/Documents/Vår2022/Objekt/TDT4100_prosjekt_aurorke/src/main/resources/saves/").getFile() + filename + ".txt";
+        return ("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt");
     }
 
     // ** Her prøver jeg å sjekke om filen funker eller ikke
@@ -34,14 +36,27 @@ public class FileDealer implements FileReadWrite {
     // ** trenger da bare å kalle på denne fubnksjonen i kontrollen 
     public void finnFil(){
         try{ 
-            File file = new File(this.filename, ".txt");
-            if (file.createNewFile()) {
-                System.out.println("Ny fil laget");
+            //fix this 
+            String fullFilePath = "C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt";
+            PrintWriter printWriter = null;
+
+            File file = new File(fullFilePath);
+
+            if(!file.exists()){
+                System.out.println("creating new user file " + fullFilePath);
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+                printWriter = new PrintWriter(new FileOutputStream(fullFilePath, true));
+                printWriter.write("start, first");
             }
-            else{
-                System.out.println("Fil finnes");
+
+            //if (file.createNewFile()) {
+            //    System.out.println("Ny fil laget");
+            //}
+            //else{
+            //    System.out.println("Fil finnes");
                 //writeFile(filename)... noe sånt 
-            }
+            //}
         }
         catch (IOException e){
             System.out.println("Noe er feil");
@@ -58,19 +73,27 @@ public class FileDealer implements FileReadWrite {
     
         Scanner scanner;
         try {
-            scanner = new Scanner(new FileReader(filename)); //sjekker om filen finnes
+            //scanner = new Scanner(new FileReader(filename)); //sjekker om filen finnes
+
+            //String fullFilename = getFilePath(getFilePath(filename));
+            // System.out.println(new File(getFilePath(filename)) );
+
+            //FileReader fileToRead = new FileReader(getFilePath(filename));
+
+            //FileReader fileToRead = new FileReader(filename);
+            scanner = new Scanner(new File(getFilePath(filename)));
+            
             while (scanner.hasNext()) {
                 //System.out.println("test");
                 String line = scanner.nextLine();
-                System.out.println(line); // se hva som står i filen 
+                //System.out.println(line); // se hva som står i filen 
                 String[] linjeSplitta = line.split(", "); 
+                
                 //legg til linje som dag
                 Day day = new Day(linjeSplitta[0], linjeSplitta[1] /*, linjeSplitta[2], linjeSplitta[3], linjeSplitta[4]*/); 
-                Day dag2 = new Day("hei", "test");
                 System.out.println(day);
                 readDays.add(day); 
-                readDays.add(dag2);
-
+                
             }
         } catch (FileNotFoundException e) {
             System.err.println("Error: file 'filename' could not open");
@@ -84,10 +107,14 @@ public class FileDealer implements FileReadWrite {
     @Override
     // ** Funker halveis, sletter det som allerede står i filen/ adder ikke
     // ** men kommer tom liste så den skriver noe til filen
-    public void writeFile(String filename) {
+    public void writeFile(String filename, ArrayList<Day> writeDays) {
         try{
-            PrintWriter outFile = new PrintWriter(filename);
-            outFile.println(readDays);
+            //PrintWriter outFile = new PrintWriter(filename);
+            //finnFil();
+            PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
+            for(int i = 0; i < writeDays.size(); i++){
+                outFile.println(writeDays.get(i));
+            }
             outFile.close();
         }
         catch (FileNotFoundException e){
@@ -99,10 +126,24 @@ public class FileDealer implements FileReadWrite {
 
     //** Prøver å teste og få alt til å funke med main metoden før tester med kontrolleren */
     public static void main(String[] args) {
-        FileDealer filedealer = new FileDealer("aurora");
+        ArrayList<Day> allDays= new ArrayList<>();
+
+        String username = "aurora";
+        FileDealer filedealer = new FileDealer(username);
+        //filedealer.finnFil();
         //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
         //filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
-        filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
-        
+        //allDays = filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
+        allDays = filedealer.readFile(username);  
+        System.out.println(allDays.get(0) + "; " + allDays.size() );
+
+        System.out.println("Now we append to the file");
+        Day enterDay = new Day("pappa", "aurora"); 
+        allDays.add(enterDay);
+
+        filedealer.writeFile(username, allDays);
+
+        allDays = filedealer.readFile(username);  
+        System.out.println(allDays.get(0) + "; " + allDays.size() );
     }
 }
