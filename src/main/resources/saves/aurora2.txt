@@ -1,2 +1,3 @@
-x, y
-pappa, aurora
+6.0, søt, 7.0, liam, 21.0
+4.0, kul, 9.0, pappa, 33.0
+4.0, kul, 9.0, pappa, 33.0

@@ -12,9 +12,12 @@ public class Day {
     private String appreciation;
     private double math;
     private LocalDate timeStamp;
+    private String test1; 
+    private String test2;
+    private String test3;  
     //private Summary summary; 
 
-/*
+
     public Day(String water, String compliments, String sleep, String appreciation, String math){
         this.water= Double.parseDouble(water);
         this.compliments = compliments; 
@@ -22,19 +25,23 @@ public class Day {
         this.appreciation = appreciation;
         this.math= Double.parseDouble(math);
     }
-    */
-
-    public Day(String compliments, String appreciation){
-        this.compliments = compliments; 
-        this.appreciation = appreciation;
-        //this.timeStamp = java.time.LocalDate.now(); 
-    }
     
 
+    /*
+    public Day(String compliments, String appreciation, String test1, String test2, String test3){
+        this.compliments = compliments; 
+        this.appreciation = appreciation;
+        this.test1 = test1;
+        this.test2 = test2;
+        this.test3 = test3;
+
+        //this.timeStamp = java.time.LocalDate.now(); 
+    }
+    */
 // -- Gettere -- 
 
 public String toString(){
-    return (compliments + ", " + appreciation);  // + ", " + timeStamp);
+    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math);  // + ", " + timeStamp);
 }
 
 public double getWater(){

@@ -84,7 +84,7 @@ public class FileDealer implements FileReadWrite {
                 String[] linjeSplitta = line.split(", "); 
                 
                 //legg til linje som dag
-                Day day = new Day(linjeSplitta[0], linjeSplitta[1] /*, linjeSplitta[2], linjeSplitta[3], linjeSplitta[4]*/); 
+                Day day = new Day(linjeSplitta[0], linjeSplitta[1] , linjeSplitta[2], linjeSplitta[3], linjeSplitta[4]); 
                 System.out.println(day);
                 readDays.add(day); 
                 
@@ -121,7 +121,7 @@ public class FileDealer implements FileReadWrite {
     public static void main(String[] args) {
         ArrayList<Day> allDays= new ArrayList<>();
 
-        String username = "aurora";
+        String username = "aurora2";
         FileDealer filedealer = new FileDealer(username);
         //filedealer.finnFil();
         //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
@@ -131,7 +131,7 @@ public class FileDealer implements FileReadWrite {
         System.out.println(allDays.get(0) + "; " + allDays.size() );
 
         System.out.println("Now we append to the file");
-        Day enterDay = new Day("pappa", "aurora"); 
+        Day enterDay = new Day("4", "kul", "9","pappa", "33"); 
         allDays.add(enterDay);
 
         filedealer.writeFile(username, allDays);
