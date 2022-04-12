@@ -10,20 +10,16 @@ import java.util.Scanner;
 
 
 public class FileDealer implements FileReadWrite {
-
-    
-
-    //ArrayList<Day> readDays= new ArrayList<>();
-    
-    // ** Lagde konstroktøren så kunne sjekke i mainen 
-    // ** - vet ikke om det er nødvendig når vi får kobla den opp til controllern 
-   private String filename = ""; 
-
+   
+   //Dette er lagd kunn for main - tror vi kan slette det når vi har kobla til controlleren: 
+    private String filename = ""; 
     
     public FileDealer(String filename){ 
         this.filename = filename;
     }
 
+
+// FÅ HJLEP AV STUDAS - hvordan få til førte linje under .getResorce, at vet hvor på pc den skal lagres. 
     public static String getFilePath(String filename){
         //return FileDealer.class.getResource("saves/").getFile() + filename + ".txt";
         //String name = FileDealer.class.getResource("C:/Users/auror/OneDrive/Documents/Vår2022/Objekt/TDT4100_prosjekt_aurorke/src/main/resources/saves/").getFile() + filename + ".txt";
@@ -66,9 +62,7 @@ public class FileDealer implements FileReadWrite {
 
 
     @Override
-    // ** NOE FEIL HER: leser ikke fil jeg har laget
     public ArrayList<Day> readFile(String filename) {
-        // ** Satt listen uttafor for da har write tilgang til den også men vet ikke om det fucker det opp 
         ArrayList<Day> readDays= new ArrayList<>();
     
         Scanner scanner;
@@ -99,19 +93,18 @@ public class FileDealer implements FileReadWrite {
             System.err.println("Error: file 'filename' could not open");
             System.exit(1);
         }
-        System.out.println(readDays.toString()); // her feilen ligger, blir ikke lagt riktig til i lista 
+        System.out.println(readDays.toString()); 
         return  readDays;
         
     }
 
     @Override
-    // ** Funker halveis, sletter det som allerede står i filen/ adder ikke
-    // ** men kommer tom liste så den skriver noe til filen
     public void writeFile(String filename, ArrayList<Day> writeDays) {
         try{
             //PrintWriter outFile = new PrintWriter(filename);
             //finnFil();
             PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
+            // lagde for løkke så det som sto i filen tidligere ikke forsvinner
             for(int i = 0; i < writeDays.size(); i++){
                 outFile.println(writeDays.get(i));
             }
