@@ -43,7 +43,7 @@ public class FileDealer implements FileReadWrite {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
                 printWriter = new PrintWriter(new FileOutputStream(fullFilePath, true));
-                printWriter.write("start, first");
+                printWriter.write("water, compliments, sleep, appreciation, math");
             }
 
             //if (file.createNewFile()) {
@@ -121,7 +121,7 @@ public class FileDealer implements FileReadWrite {
     public static void main(String[] args) {
         ArrayList<Day> allDays= new ArrayList<>();
 
-        String username = "aurora2";
+        String username = "aurora6";
         FileDealer filedealer = new FileDealer(username);
         //filedealer.finnFil();
         //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
