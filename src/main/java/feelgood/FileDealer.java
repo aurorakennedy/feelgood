@@ -19,7 +19,7 @@ public class FileDealer implements FileReadWrite {
     }
 
 
-// FÅ HJLEP AV STUDAS - hvordan få til førte linje under .getResorce, at vet hvor på pc den skal lagres. 
+// ?? FÅ HJLEP AV STUDAS - hvordan få til førte linje under .getResorce, at vet hvor på pc den skal lagres. 
     public static String getFilePath(String filename){
         //return FileDealer.class.getResource("saves/").getFile() + filename + ".txt";
         //String name = FileDealer.class.getResource("C:/Users/auror/OneDrive/Documents/Vår2022/Objekt/TDT4100_prosjekt_aurorke/src/main/resources/saves/").getFile() + filename + ".txt";
@@ -27,9 +27,6 @@ public class FileDealer implements FileReadWrite {
     }
 
     // ** Her prøver jeg å sjekke om filen funker eller ikke
-    // ** så dette på w3school, skal egentlig lage fil hvis den eksisterer, tror ikke dett funker enda 
-    // ** tanken er at her kan vi adde de to andre funskjonene read/write 
-    // ** trenger da bare å kalle på denne fubnksjonen i kontrollen 
     public void finnFil(){
         try{ 
             //fix this 
@@ -43,16 +40,9 @@ public class FileDealer implements FileReadWrite {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
                 printWriter = new PrintWriter(new FileOutputStream(fullFilePath, true));
+                // ?? Trenger vi dette: 
                 printWriter.write("water, compliments, sleep, appreciation, math");
             }
-
-            //if (file.createNewFile()) {
-            //    System.out.println("Ny fil laget");
-            //}
-            //else{
-            //    System.out.println("Fil finnes");
-                //writeFile(filename)... noe sånt 
-            //}
         }
         catch (IOException e){
             System.out.println("Noe er feil");
@@ -105,6 +95,7 @@ public class FileDealer implements FileReadWrite {
             //finnFil();
             PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
             // lagde for løkke så det som sto i filen tidligere ikke forsvinner
+            // ?? kan man bare appende 
             for(int i = 0; i < writeDays.size(); i++){
                 outFile.println(writeDays.get(i));
             }
@@ -121,14 +112,14 @@ public class FileDealer implements FileReadWrite {
     public static void main(String[] args) {
         ArrayList<Day> allDays= new ArrayList<>();
 
-        String username = "aurora6";
+        String username = "klara2";
         FileDealer filedealer = new FileDealer(username);
-        //filedealer.finnFil();
+        filedealer.finnFil();
         //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
         //filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
         //allDays = filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
         allDays = filedealer.readFile(username);  
-        System.out.println(allDays.get(0) + "; " + allDays.size() );
+        //System.out.println(allDays.get(0) + "; " + allDays.size() );
 
         System.out.println("Now we append to the file");
         Day enterDay = new Day("4", "kul", "9","pappa", "33"); 
