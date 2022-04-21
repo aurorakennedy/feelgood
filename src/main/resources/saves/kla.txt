@@ -1,0 +1,6 @@
+6.0, fewfew, 5.0, rgwrgw, 2
+6.0, gregeg, 4.0, regegeg, 13
+5.0, gregregre, 2.0, wefwefwf, 32
+6.0, rfgrwg, 5.0, wfwefew, 31
+4.0, rfewrgfw, 4.0, efwe, 24
+5.0, rfwf, 5.0, wefwe, 26

@@ -10,11 +10,11 @@ public class Day {
     private String compliments;
     private double sleep;
     private String appreciation;
-    private double math;
-    //private Summary summary; 
+    private int math;
+    private boolean correctAnswer;
 
 
-    public Day(double water, String compliments, double sleep, String appreciation, double math) throws IllegalArgumentException {
+    public Day(double water, String compliments, double sleep, String appreciation, int math, int actualAnswer) throws IllegalArgumentException {
         // input validering med IllegalArgumentException
         if (water >= 0 && water <=50) {
             this.water = water;
@@ -36,11 +36,17 @@ public class Day {
         } else{
             throw new IllegalArgumentException("Navnet du har oppgitt er enten for kort eller for langt.");
         }
-        /*if (math.equals(27)) {
+        if (math>(actualAnswer-3) && math<(actualAnswer+3)) {
             this.math= math;
         } else{
             throw new IllegalArgumentException("Du får et forsøk til på mattestykket :)");
-        }*/ //Gjør ferdig når vi har fikset math stykket.
+        } //Gjør ferdig når vi har fikset math stykket.
+
+        if (this.math == actualAnswer) {
+            this.correctAnswer = true;
+        } else {
+            this.correctAnswer = false;
+        }
     }
 
 
@@ -62,8 +68,12 @@ public double getSleep() {
 public String getAppreciation() {
     return appreciation;
 }
-public double getMath() {
+public int getMath() {
     return math;
+}
+
+public boolean getCorrectAnswer() {
+    return this.correctAnswer;
 }
 
 
