@@ -1,0 +1,8 @@
+5.0, hehehe, 6.0, heheh, 0.0
+
+3.0, eeee, 2.0, eee, 0.0
+
+4.0, JaAA, 4.0, Julius, 0.0
+
+Dette er en
+Test
