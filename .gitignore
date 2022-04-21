@@ -85,6 +85,8 @@ local.properties
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
+*.txt
+
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml

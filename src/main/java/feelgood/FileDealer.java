@@ -104,13 +104,15 @@ public class FileDealer implements FileReadWrite {
             //finnFil(filename);
             //PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
             PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + filename +".txt"), true));
+            String lineBreak = System.lineSeparator(); 
             // lagde for løkke så det som sto i filen tidligere ikke forsvinner
             // ?? kan man bare appende 
             
             for(int i = 0; i < writeDays.size(); i++){
-                outFile.append(writeDays.get(i)+ "");
-                //outFile.println();
-            }
+                outFile.append(writeDays.get(i)+ "" + lineBreak);
+                //outFile.println(lineBreak);
+            } 
+            //outFile.println("Dette er en" + lineBreak +"Test");
             outFile.close();
         }
         catch (FileNotFoundException e){

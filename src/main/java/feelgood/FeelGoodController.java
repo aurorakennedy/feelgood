@@ -53,7 +53,6 @@ public class FeelGoodController {
         }
     }
 
-    
 
     @FXML
     private void lagreSvar() throws IOException {
@@ -72,6 +71,8 @@ public class FeelGoodController {
         }
 
         glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear();
+        allDays.clear();
+
     }
 
     @FXML
