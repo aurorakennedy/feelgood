@@ -12,13 +12,8 @@ public class Summary {
     
 
     //lager Day-objekter
-    public void add(double water,String compliments, double sleep, String appreciation, double math) throws IllegalArgumentException{ 
-        try {
-            Day day = new Day(water, compliments, sleep, appreciation, math);
-            days.add(day); 
-        } catch (IllegalArgumentException e) {
-            throw e;
-        }
+    public void add(Day day) throws IllegalArgumentException{ 
+        days.add(day); 
     }
 
 
