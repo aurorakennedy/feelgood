@@ -19,5 +19,4 @@ public class FeelGoodApp extends Application {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("fgApp.fxml")))); //sier at appen skal bruke "fgApp.fxml"
         primaryStage.show(); //viser vinduet
     }
-
 }
