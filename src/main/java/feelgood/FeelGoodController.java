@@ -3,7 +3,9 @@ package feelgood;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -40,11 +42,18 @@ public class FeelGoodController {
 
     @FXML
     private void lagreSvar() {
+        //if brukernavnexists typ, kjør funksjonen
         System.out.println("lagreSvar kjører");
-        summary.add(glassVann.getText(), komplement.getText(), timerSovn.getText(), verdigNavn.getText(), matteSum.getText()); //henter info fra tekstfelt og sender til add().
+        try{
+            summary.add(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Double.parseDouble(matteSum.getText())); //henter info fra tekstfelt og sender til add().
+        } catch(IllegalArgumentException e){
+            Alert feilmelding = new Alert(AlertType.ERROR);
+            //feilmelding.setContentText(e.getMessage());
+            feilmelding.setTitle("Feil");
+            feilmelding.setHeaderText(e.getMessage());
+            feilmelding.show();
+        }
         glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear();
-        
-        
     }
 
     //** Kaos her nå men det er fordi funksjonen i FileDealer ikke er på plass */
@@ -75,7 +84,5 @@ public class FeelGoodController {
         // oppsummering.setContentText(summary.motivationalMessage());
         feedback.setText(summary.motivationalMessage());
         feedback.setFill(Color.BLUE);
-
     }
-    
 }

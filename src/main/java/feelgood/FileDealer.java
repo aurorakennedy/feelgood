@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class FileDealer implements FileReadWrite {
-   
+public class FileDealer /*implements FileReadWrite*/ {
+   /*
    //Dette er lagd kunn for main - tror vi kan slette det når vi har kobla til controlleren: 
     private String filename = ""; 
     
@@ -109,7 +109,7 @@ public class FileDealer implements FileReadWrite {
     
 
     //** Prøver å teste og få alt til å funke med main metoden før tester med kontrolleren */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ArrayList<Day> allDays= new ArrayList<>();
 
         String username = "klara2";
@@ -129,5 +129,5 @@ public class FileDealer implements FileReadWrite {
 
         allDays = filedealer.readFile(username);  
         System.out.println(allDays.get(0) + "; " + allDays.size() );
-    }
+    }*/
 }
