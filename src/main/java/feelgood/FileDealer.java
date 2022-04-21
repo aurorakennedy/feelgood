@@ -83,7 +83,7 @@ public class FileDealer implements FileReadWrite {
                 String[] linjeSplitta = line.split(", "); 
                 
                 //legg til linje som dag
-                Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Double.parseDouble(linjeSplitta[4])); 
+                Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Integer.parseInt(linjeSplitta[4]), Integer.parseInt(linjeSplitta[5])); 
                 System.out.println(day);
                 readDays.add(day); 
                 

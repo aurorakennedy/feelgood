@@ -11,6 +11,7 @@ public class Day {
     private double sleep;
     private String appreciation;
     private int math;
+    private int actualAnswer;
     private boolean correctAnswer;
 
 
@@ -38,22 +39,20 @@ public class Day {
         }
         if (math>(actualAnswer-3) && math<(actualAnswer+3)) {
             this.math= math;
+            this.actualAnswer = actualAnswer;
+            this.correctAnswer = (this.math == this.actualAnswer);
         } else{
             throw new IllegalArgumentException("Du får et forsøk til på mattestykket :)");
         } //Gjør ferdig når vi har fikset math stykket.
 
-        if (this.math == actualAnswer) {
-            this.correctAnswer = true;
-        } else {
-            this.correctAnswer = false;
-        }
+        
     }
 
 
 // -- Gettere -- 
 
 public String toString(){
-    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math);
+    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
 }
 
 public double getWater(){
