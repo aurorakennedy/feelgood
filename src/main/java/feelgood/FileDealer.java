@@ -3,6 +3,7 @@ package feelgood;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
@@ -97,17 +98,18 @@ public class FileDealer implements FileReadWrite {
     }
 
     @Override
-    public void writeFile(String filename, ArrayList<Day> writeDays) {
+    public void writeFile(String filename, ArrayList<Day> writeDays) throws IOException {
         try{
             //PrintWriter outFile = new PrintWriter(filename);
-            finnFil(filename);
+            //finnFil(filename);
             //PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
-            PrintWriter outFile = new PrintWriter(new File( "src/main/resources/saves/" + filename +".txt"));
+            PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + filename +".txt"), true));
             // lagde for løkke så det som sto i filen tidligere ikke forsvinner
             // ?? kan man bare appende 
             
             for(int i = 0; i < writeDays.size(); i++){
-                outFile.println(writeDays.get(i));
+                outFile.append(writeDays.get(i)+ "");
+                //outFile.println();
             }
             outFile.close();
         }
