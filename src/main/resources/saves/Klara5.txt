@@ -1,2 +1,0 @@
-5.0, søt, 4.0, Ingrid, 21.0
-5.0, snill, 8.0, Klara, 0.08.0, hysterisk morsom, 10.0, Aurora, 0.04.0, rar, 3.0, rune, 0.0

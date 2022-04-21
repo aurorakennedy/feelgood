@@ -29,11 +29,12 @@ public class FeelGoodController {
 
 
     @FXML
-    public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn;
+    public TextField glassVann, komplement, timerSovn, verdigNavn, mathEquation, matteSum, brukernavn;
 
     @FXML
     private Text feedback;
     
+
     
     
     public void initialize() {
@@ -43,8 +44,13 @@ public class FeelGoodController {
     }
 
     private String getFilename(){
-        String filename = this.brukernavn.getText();
-        return filename; 
+        String filename = this.brukernavn.getText().toLowerCase();
+        if (filename.length()<15 && !(filename.contains(" "))){
+            return filename;
+        }
+        else{
+            throw new IllegalArgumentException("Brukernavnet kan kun bestå av ett ord. Det kan heller ikke være lengere enn 15 bokstaver.");
+        }
     }
 
     
@@ -93,5 +99,9 @@ public class FeelGoodController {
         // oppsummering.setContentText(summary.motivationalMessage());
         feedback.setText(summary.motivationalMessage());
         feedback.setFill(Color.BLUE);
+    }
+
+    private void getMatteStykke(){
+        mathEquation.setText("noe");
     }
 }
