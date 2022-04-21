@@ -8,8 +8,6 @@ import java.util.Set;
 
 public class Summary {
     private ArrayList<Day> days = new ArrayList<Day>();
-    private FeelGoodController feelGoodController;
-    private Day day;
     
 
     //lager Day-objekter
@@ -119,7 +117,7 @@ public class Summary {
     private String math(){
         int antallRiktige=0;
         for (int i=0; i < days.size(); i++){ 
-            if(day.getCorrectAnswer()){
+            if(days.get(i).getCorrectAnswer()){
                 antallRiktige+=1;
             } 
         }
