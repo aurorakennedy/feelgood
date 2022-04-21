@@ -1,3 +1,1 @@
-test, pappa
-snill, liam
-kul, pappa
+5.0, hh, 4.0, jj, 33.0

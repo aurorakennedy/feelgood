@@ -1,6 +1,8 @@
 package feelgood;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -15,8 +17,12 @@ public class FeelGoodController {
     // Trenger ikke konstruktør // Kobler opp FXML med controlleren 
 
     private Summary summary;
-    private FileDealer filedealer; 
+    private FileReadWrite writeHandler = new FileDealer(); 
     private Day day;
+    private ArrayList<Day> allDays = new ArrayList<>(); 
+
+    private FileDealer filedealer; 
+   
 
 
     @FXML
@@ -38,25 +44,31 @@ public class FeelGoodController {
         return filename; 
     }
 
+    
+
     @FXML
     private void lagreSvar() {
         System.out.println("lagreSvar kjører");
+         
+       Day enterDay = new Day(glassVann.getText(), komplement.getText(), timerSovn.getText(), verdigNavn.getText(), matteSum.getText());
+       allDays.add(enterDay);        
+
         summary.add(glassVann.getText(), komplement.getText(), timerSovn.getText(), verdigNavn.getText(), matteSum.getText()); //henter info fra tekstfelt og sender til add().
+        
+        writeHandler.writeFile(getFilename(), allDays);
+        
         glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear();
         
         
     }
 
-    //** Kaos her nå men det er fordi funksjonen i FileDealer ikke er på plass */
     @FXML
-    private void checkFile(){
-        System.out.println("Fil kjører, bra!");
-        System.out.println(getFilename());
-        // filNavn = brukernavn.getText();
-        //filedealer.finnFil(brukernavn.getText());
-        //filedealer.finnFil("Aurora");
-        //filedealer.readFile(brukernavn.getText());
+    void handleRead(){
+        allDays = writeHandler.readFile(getFilename()); 
+
     }
+
+    
 
     @FXML
     private void oppsummering(){

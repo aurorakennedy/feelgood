@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,25 +13,29 @@ import java.util.Scanner;
 public class FileDealer implements FileReadWrite {
    
    //Dette er lagd kunn for main - tror vi kan slette det når vi har kobla til controlleren: 
-    private String filename = ""; 
-    
+    //private String filename = ""; 
+   /* 
     public FileDealer(String filename){ 
         this.filename = filename;
     }
-
+*/
 
 // ?? FÅ HJLEP AV STUDAS - hvordan få til førte linje under .getResorce, at vet hvor på pc den skal lagres. 
+   
     public static String getFilePath(String filename){
-        //return FileDealer.class.getResource("saves/").getFile() + filename + ".txt";
+        return FileDealer.class.getResource("src/main/resources/saves/").getFile() + filename + ".txt";
         //String name = FileDealer.class.getResource("C:/Users/auror/OneDrive/Documents/Vår2022/Objekt/TDT4100_prosjekt_aurorke/src/main/resources/saves/").getFile() + filename + ".txt";
-        return ("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt");
+        //return Path.of(System.getProperty("user.home"), "tdt4100", "feelgood");
+        //return ("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt");
     }
 
+    
     // ** Her prøver jeg å sjekke om filen funker eller ikke
-    public void finnFil(){
+    public void finnFil(String filename){
         try{ 
             //fix this 
-            String fullFilePath = "C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt";
+           // String fullFilePath = "C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt";
+            String fullFilePath = "src/main/resources/saves/" + filename +".txt";
             PrintWriter printWriter = null;
 
             File file = new File(fullFilePath);
@@ -65,7 +70,10 @@ public class FileDealer implements FileReadWrite {
             //FileReader fileToRead = new FileReader(getFilePath(filename));
 
             //FileReader fileToRead = new FileReader(filename);
-            scanner = new Scanner(new File(getFilePath(filename)));
+            //scanner = new Scanner(new File(getFilePath(filename)));
+            finnFil(filename); //???????? Funker dette ? 
+            
+            scanner = new Scanner(new File("src/main/resources/saves/" + filename +".txt"));
             
             while (scanner.hasNext()) {
                 //System.out.println("test");
@@ -92,10 +100,12 @@ public class FileDealer implements FileReadWrite {
     public void writeFile(String filename, ArrayList<Day> writeDays) {
         try{
             //PrintWriter outFile = new PrintWriter(filename);
-            //finnFil();
-            PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
+            finnFil(filename);
+            //PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
+            PrintWriter outFile = new PrintWriter(new File( "src/main/resources/saves/" + filename +".txt"));
             // lagde for løkke så det som sto i filen tidligere ikke forsvinner
             // ?? kan man bare appende 
+            
             for(int i = 0; i < writeDays.size(); i++){
                 outFile.println(writeDays.get(i));
             }
@@ -109,10 +119,11 @@ public class FileDealer implements FileReadWrite {
     
 
     //** Prøver å teste og få alt til å funke med main metoden før tester med kontrolleren */
-    public static void main(String[] args) {
+    
+    /*public static void main(String[] args) {
         ArrayList<Day> allDays= new ArrayList<>();
 
-        String username = "klara2";
+        String username = "Jens2";
         FileDealer filedealer = new FileDealer(username);
         filedealer.finnFil();
         //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
@@ -129,5 +140,6 @@ public class FileDealer implements FileReadWrite {
 
         allDays = filedealer.readFile(username);  
         System.out.println(allDays.get(0) + "; " + allDays.size() );
-    }
+    
+    } */
 }
