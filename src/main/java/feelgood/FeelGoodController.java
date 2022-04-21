@@ -91,7 +91,7 @@ public class FeelGoodController {
     @FXML
     void handleRead(){
         allDays = writeHandler.readFile(getFilename()); 
-        System.out.println(writeHandler.readFile(getFilename()));
+        //System.out.println(writeHandler.readFile(getFilename()));
     }
 
     
