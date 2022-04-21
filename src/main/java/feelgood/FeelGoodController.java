@@ -91,7 +91,7 @@ public class FeelGoodController {
     @FXML
     void handleRead(){
         allDays = writeHandler.readFile(getFilename()); 
-
+        System.out.println(writeHandler.readFile(getFilename()));
     }
 
     
@@ -114,5 +114,4 @@ public class FeelGoodController {
         feedback.setText(summary.motivationalMessage());
         feedback.setFill(Color.BLUE);
     }
-
 }
