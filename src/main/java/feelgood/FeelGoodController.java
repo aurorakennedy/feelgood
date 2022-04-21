@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -29,10 +30,10 @@ public class FeelGoodController {
 
 
     @FXML
-    public TextField glassVann, komplement, timerSovn, verdigNavn, mathEquation, matteSum, brukernavn;
+    public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn;
 
     @FXML
-    private Text feedback;
+    private Text feedback, mathEquation;
     
 
     
@@ -42,6 +43,18 @@ public class FeelGoodController {
         summary = new Summary();
 
     }
+
+    @FXML
+    private int getMatteStykke() { 
+        Random random = new Random();
+        int tall1 = random.nextInt(20)+1; //tilfeldig tall mellom 1 og 20
+        int tall2 = random.nextInt(20)+1;
+        int svar = tall1 + tall2;
+        mathEquation.setText(tall1 + " + " + tall2);
+        return svar;
+    }
+
+
 
     private String getFilename(){
         String filename = this.brukernavn.getText().toLowerCase();
@@ -102,7 +115,4 @@ public class FeelGoodController {
         feedback.setFill(Color.BLUE);
     }
 
-    private void getMatteStykke(){
-        mathEquation.setText("noe");
-    }
 }
