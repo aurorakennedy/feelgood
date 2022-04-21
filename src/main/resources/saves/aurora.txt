@@ -1,0 +1,10 @@
+5.0, heheh, 8.0, heha, 0.0
+4.0, hehe, 8.0, gegeg, 0.0
+5.0, gegege, 6.0, haha, 0.0
+4.0, Fin, 6.0, HHH, 0.0
+5.0, heheh, 8.0, heha, 0.0
+4.0, hehe, 8.0, gegeg, 0.0
+5.0, gegege, 6.0, haha, 0.0
+4.0, Fin, 6.0, HHH, 0.0
+3.0, hhh, 6.0, iiii, 0.0
+5.0, eee, 5.0, ttt, 0.0

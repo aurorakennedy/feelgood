@@ -84,7 +84,7 @@ public class FileDealer implements FileReadWrite {
                 
                 //legg til linje som dag
                 Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Double.parseDouble(linjeSplitta[4])); 
-                System.out.println(day);
+                //System.out.println(day);
                 readDays.add(day); 
                 
             }
@@ -92,9 +92,25 @@ public class FileDealer implements FileReadWrite {
             System.err.println("Error: file 'filename' could not open");
             System.exit(1);
         }
-        System.out.println(readDays.toString()); 
+        //System.out.println(readDays.toString()); 
         return  readDays;
         
+    }
+
+    public String tidligereDag(String filename){
+        if(readFile(filename).size() > 1){
+            //ArrayList<Day> tidligereDager = new ArrayList<Day>();
+            StringBuilder tidligereDager = new StringBuilder(); 
+            //for (int i = 0; readFile(filename).size() > 0 ; i++){
+            for( Day day : readFile(filename)){
+                //tidligereDager.add(readFile(filename).get(i));
+                tidligereDager.append(day);
+                tidligereDager.append("\n");
+            }
+            return tidligereDager.toString(); 
+        } else{
+            throw new IllegalArgumentException("Du må fylle ut minst en dag");
+        }
     }
 
     @Override
