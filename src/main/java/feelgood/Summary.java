@@ -7,8 +7,9 @@ import java.util.Random;
 import java.util.Set;
 
 public class Summary {
-
     private ArrayList<Day> days = new ArrayList<Day>();
+    private FeelGoodController feelGoodController;
+    private Day day;
     
 
     //lager Day-objekter
@@ -28,7 +29,7 @@ public class Summary {
         results.add(longestCompliment()); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
         results.add(sleep());
         results.add(appreciation()); 
-
+        results.add(math());
         return results;
         }
         
@@ -112,16 +113,25 @@ public class Summary {
             }
         }
         return "Ingen dager registrert";
-        }
+    }
 
-
-        public String motivationalMessage() {
-            String[] sleep = this.sleep().split(",");
-            return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + /*calculations().get(4) +*/ " riktige.";
+    // -- Utregning math --
+    private String math(){
+        int antallRiktige=0;
+        for (int i=0; i < days.size(); i++){ 
+            if(day.getCorrectAnswer()){
+                antallRiktige+=1;
+            } 
         }
+    return antallRiktige + "";
+    }
+
+    public String motivationalMessage() {
+        String[] sleep = this.sleep().split(",");
+        return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktige.";
+    }
 
     
-    // -- Utregning math --
     //andre funksjoner vi kan bruke igjen
    
 /* Kan vi gjøre det til mer generelle metoder??? 
