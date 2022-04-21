@@ -1,5 +1,6 @@
 package feelgood;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 //import feelgood.model.FeelGood; 
@@ -9,5 +10,5 @@ public interface FileReadWrite {
 
     public ArrayList<Day> readFile(String filename);
     
-    public void writeFile(String filename, ArrayList<Day> writeDays);
+    public void writeFile(String filename, ArrayList<Day> writeDays) throws IOException; 
 }

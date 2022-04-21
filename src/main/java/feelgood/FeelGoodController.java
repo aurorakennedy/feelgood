@@ -1,6 +1,7 @@
 package feelgood;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -49,8 +50,7 @@ public class FeelGoodController {
     
 
     @FXML
-    private void lagreSvar() {
-        //if brukernavnexists typ, kjør funksjonen
+    private void lagreSvar() throws IOException {
         System.out.println("lagreSvar kjører");
         try{
             Day newDay = new Day(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Double.parseDouble(matteSum.getText()));
