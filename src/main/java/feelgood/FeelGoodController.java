@@ -45,7 +45,7 @@ public class FeelGoodController {
     }
 
     @FXML
-    private int getMatteStykke() { 
+    private int matteStykke() { 
         Random random = new Random();
         int tall1 = random.nextInt(20)+1; //tilfeldig tall mellom 1 og 20
         int tall2 = random.nextInt(20)+1;
