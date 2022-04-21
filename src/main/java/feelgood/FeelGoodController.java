@@ -29,7 +29,7 @@ public class FeelGoodController {
 
 
     @FXML
-    public TextField glassVann, komplement, timerSovn, verdigNavn, mathEquation, matteSum, brukernavn;
+    public TextField glassVann, komplement, timerSovn, verdigNavn, /*mathEquation, matteSum,*/ brukernavn;
 
     @FXML
     private Text feedback;
@@ -78,7 +78,7 @@ public class FeelGoodController {
     @FXML
     void handleRead(){
         allDays = writeHandler.readFile(getFilename()); 
-
+        System.out.println(writeHandler.readFile(getFilename()));
     }
 
     
@@ -101,8 +101,8 @@ public class FeelGoodController {
         feedback.setText(summary.motivationalMessage());
         feedback.setFill(Color.BLUE);
     }
-
+/*
     private void getMatteStykke(){
         mathEquation.setText("noe");
-    }
+    }*/
 }
