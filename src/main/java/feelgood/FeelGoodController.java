@@ -39,12 +39,10 @@ public class FeelGoodController {
     private Text feedback, mathEquation;
     
     
-    
-    public void initialize() {
+    public void initialize(){
         // Dette er på en måte konstruktøren vår -- kjører når appen starter opp
         summary = new Summary(); // generer summary tracker
         matteStykke(); // generer mattestykke og sett tekstfelt
-
     }
 
     @FXML

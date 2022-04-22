@@ -1,10 +1,5 @@
-
 package feelgood;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-//Day- ta inn input, skrive til fil
+//Day- 
 public class Day {
     private double water;
     private String compliments;
@@ -44,16 +39,10 @@ public class Day {
         } else{
             throw new IllegalArgumentException("Du får et forsøk til på mattestykket :)");
         } //Gjør ferdig når vi har fikset math stykket.
-
-        
     }
 
 
 // -- Gettere -- 
-
-public String toString(){
-    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
-}
 
 public double getWater(){
     return water;
@@ -75,5 +64,8 @@ public boolean getCorrectAnswer() {
     return this.correctAnswer;
 }
 
-
+//toString som brukes når Day-objekter skrives til fil
+public String toString(){
+    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
+}
 }
