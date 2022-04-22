@@ -38,7 +38,7 @@ public class Day {
             this.correctAnswer = (this.math == this.actualAnswer);
         } else{
             throw new IllegalArgumentException("Du får et forsøk til på mattestykket :)");
-        } //Gjør ferdig når vi har fikset math stykket.
+        }
     }
 
 

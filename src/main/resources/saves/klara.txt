@@ -1,2 +1,6 @@
-4.0, kul bukse, 7.0, Jens, 28
-9.0, fine sko, 6.0, aurora, 9
+7.0, fefwefw, 5.0, ergrege, 37, 37
+5.0, gergeg, 5.0, gergeg, 35, 35
+5.0, fwfw, 5.0, fwef, 18, 18
+5.0, wefwew, 3.0, wefwfew, 39, 39
+5.0, rgrege, 4.0, wgweg, 8, 8
+5.0, sfwfdwf, 4.0, efwefw, 34, 34

@@ -1,14 +1,12 @@
 package feelgood;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 //import feelgood.model.FeelGood; 
 
 public interface FileReadWrite {
     //her skal alle mdetodene være som leser og skriver til fil
 
-    public ArrayList<Day> readFile(String filename);
+    public Summary readFile(String filename);
     
-    public void writeFile(String filename, ArrayList<Day> writeDays) throws IOException; 
+    public void writeFile(String filename, Summary summary) throws IOException; 
 }

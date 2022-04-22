@@ -1,28 +1,27 @@
 package feelgood;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 public class Summary {
-    private ArrayList<Day> days = new ArrayList<Day>();
-    
+    //lager en liste hvor alle dagene ligger
+    private ArrayList<Day> days = new ArrayList<Day>(); 
+    //henter listen
+    public ArrayList<Day> getDays() {
+        return this.days;
+    }
 
-    //lager Day-objekter
+    //legger til day-objekter i days-listen
     public void add(Day day) throws IllegalArgumentException{ 
         days.add(day); 
     }
 
 
-
-    // -- Legger alt inn i listen results -- 
-     public ArrayList<String> calculations(){     // Gjør alle utregninger 
-        ArrayList<String> results = new ArrayList<>(); // da slipper vi å cleare den 
-
-        //i denne funksjonen: hvis days.size()==0 -->avslutter metoden
-        
+    // -- Legger resulatene av utregningene nedenfor inn i results-listen og returnerer denne -- 
+     public ArrayList<String> calculations(){ 
+        ArrayList<String> results = new ArrayList<>(); // har listen inni metoden, slik at den lages på nytt hver gang -da slipper vi å cleare den
         results.add(""+sumWater()); 
         results.add(longestCompliment()); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
         results.add(sleep());
@@ -31,8 +30,7 @@ public class Summary {
         return results;
         }
         
-    
-   
+
     // -- Utregning av vann -- 
     private double sumWater(){
         double glassesOfWater = 0; 
@@ -95,8 +93,7 @@ public class Summary {
                         bestevenn = midlertidigBestevenn; 
                         count = tempCount; 
                     }
-                    }
-                    
+                    } 
                 }
                 return bestevenn; 
             }
@@ -110,7 +107,7 @@ public class Summary {
                 return komplimentResult;         
             }
         }
-        return "Ingen dager registrert";
+        return "mammaen din.";
     }
 
     // -- Utregning math --
@@ -124,36 +121,21 @@ public class Summary {
     return antallRiktige + "";
     }
 
+
+    //Returnerer hele oppsummeringen
     public String motivationalMessage() {
         String[] sleep = this.sleep().split(",");
         return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktige.";
     }
 
-    
-    //andre funksjoner vi kan bruke igjen
-   
-/* Kan vi gjøre det til mer generelle metoder??? 
-    private void glassesToLiters(){
-        
-    }
-
-    complimentsSorted()
-    */
-
-
-
-
-    
-    //public String compliments(List complimentList){
-        //få ordene fra listen inn i tooString
-        //If-løkke: hvis få ord: kanskje du skal prøve gi flere komplementer, det gir glede å glede andre
-        //hvis passe mengde: Vi kunne sagt det samme om deg, itillegg er du snil! 
-        //shvis formye: Dette var litt vell mange komplimenter, husk at det kan virke falskt!
-        //complimentList[i] 
-    
-
-    public static void main(String[] args) {
-        //Summary summary=new Summary();
-        //System.out.println(summary.getResults());
+    //toString som returnerer summary som en string (brukes til "tidligere dager" tilbakemeldingen)
+    @Override
+    public String toString() {
+        StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
+        for( Day day : this.days) { //for dager in days
+            tidligereDager.append(day); //legger til dager i tidligereDager
+            tidligereDager.append("\n");  //lager linjeskift mellom dagene
+        }
+        return tidligereDager.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
     }
 }

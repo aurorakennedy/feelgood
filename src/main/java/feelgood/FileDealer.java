@@ -2,148 +2,57 @@ package feelgood;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
-
-
 public class FileDealer implements FileReadWrite {
-   
+
+    //gir plassering til filer
     public static String getFilePath(String filename){
         return FileDealer.class.getResource("src/main/resources/saves/").getFile() + filename + ".txt";
     }
 
     
-    // ** Her prøver jeg å sjekke om filen funker eller ikke
-    public void finnFil(String filename){
-        try{ 
-            String fullFilePath = "src/main/resources/saves/" + filename +".txt";
-            PrintWriter printWriter = null;
 
-            File file = new File(fullFilePath);
-
-            if(!file.exists()){
-                System.out.println("creating new user file " + fullFilePath);
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-                printWriter = new PrintWriter(new FileOutputStream(fullFilePath, true));
-                // ?? Trenger vi dette: 
-                printWriter.write("water, compliments, sleep, appreciation, math");
-            }
-        }
-        catch (IOException e){
-            System.out.println("Noe er feil");
-        }
-    }
-
-
-
+    //leser fil, returnerer filnavnet/brukernavnet sitt Summary-objekt
     @Override
-    public ArrayList<Day> readFile(String filename) {
-        ArrayList<Day> readDays= new ArrayList<>();
-    
-        Scanner scanner;
-        try {
-            //scanner = new Scanner(new FileReader(filename)); //sjekker om filen finnes
-
-            //String fullFilename = getFilePath(getFilePath(filename));
-            // System.out.println(new File(getFilePath(filename)) );
-
-            //FileReader fileToRead = new FileReader(getFilePath(filename));
-
-            //FileReader fileToRead = new FileReader(filename);
-            //scanner = new Scanner(new File(getFilePath(filename)));
-            finnFil(filename); //???????? Funker dette ? 
-            
-            scanner = new Scanner(new File("src/main/resources/saves/" + filename +".txt"));
-            
-            while (scanner.hasNext()) {
-                //System.out.println("test");
-                String line = scanner.nextLine();
-                //System.out.println(line); // se hva som står i filen 
-                String[] linjeSplitta = line.split(", "); 
-                
-                //legg til linje som dag
-                Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Integer.parseInt(linjeSplitta[4]), Integer.parseInt(linjeSplitta[5])); 
-                System.out.println(day);
-                readDays.add(day); 
-                
-            }
-        } catch (FileNotFoundException e) {
-            System.err.println("Error: file 'filename' could not open");
-            System.exit(1);
-        }
-        //System.out.println(readDays.toString()); 
-        return  readDays;
+    public Summary readFile(String filename) {
+        Scanner scanner = null;
+        Summary userSummary = null;
         
-    }
-
-    public String tidligereDag(String filename){
-        if(readFile(filename).size() > 0){
-            //ArrayList<Day> tidligereDager = new ArrayList<Day>();
-            StringBuilder tidligereDager = new StringBuilder(); 
-            //for (int i = 0; readFile(filename).size() > 0 ; i++){
-            for( Day day : readFile(filename)){
-                //tidligereDager.add(readFile(filename).get(i));
-                tidligereDager.append(day);
-                tidligereDager.append("\n");
-            }
-            return tidligereDager.toString(); 
-        } else{
-            throw new IllegalArgumentException("Du må fylle ut minst en dag");
+        try { //finner eksisterende fil 
+            scanner = new Scanner(new File("src/main/resources/saves/" + filename +".txt"));
+        } catch (FileNotFoundException e) { //utløser feilmelding hvis fil ikke eksisterer, men programmet fortsetter
+            System.err.println(filename + "finnes ikke fra før av. Koden kjører videre.");
         }
-    }
-
-    @Override
-    public void writeFile(String filename, ArrayList<Day> writeDays) throws IOException {
-        try{
-            //PrintWriter outFile = new PrintWriter(filename);
-            //finnFil(filename);
-            //PrintWriter outFile = new PrintWriter(new File(getFilePath(filename)));
-            PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + filename +".txt"), true));
-            String lineBreak = System.lineSeparator(); 
-            // lagde for løkke så det som sto i filen tidligere ikke forsvinner
-            // ?? kan man bare appende 
             
-            for(int i = 0; i < writeDays.size(); i++){
-                outFile.append(writeDays.get(i)+ "" + lineBreak);
-                //outFile.println(lineBreak);
-            } 
-            //outFile.println("Dette er en" + lineBreak +"Test");
-            outFile.close();
-        }
-        catch (FileNotFoundException e){
-            System.err.println("feil");
-            System.exit(1);
-        }
+        if (scanner != null) { //sjekker at fil er funnet, ellers hadde scanner vært null
+            userSummary = new Summary(); //lager et nytt tomt Summary-objekt
+            while (scanner.hasNext()) { //leser linjene til filen og gjør hver linje til Day-objekter, som legges til userSummary
+                String line = scanner.nextLine(); 
+                String[] linjeSplitta = line.split(", ");  //splitter på ","
+                //gjør om linja til et Day-objekt:
+                Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Integer.parseInt(linjeSplitta[4]), Integer.parseInt(linjeSplitta[5])); 
+                userSummary.add(day); //legger til Day-objektet i userSummary
+                System.out.println(day); //til terminal slik at vi kan se de enkelte Day-objektene             
+            }
+        }     
+        return userSummary; //filename/brukernavn sitt Summary-objekt
     }
-    
 
-    //** Prøver å teste og få alt til å funke med main metoden før tester med kontrolleren */
-    
-    /*public static void main(String[] args) {
-        ArrayList<Day> allDays= new ArrayList<>();
 
-        String username = "Jens2";
-        FileDealer filedealer = new FileDealer(username);
-        filedealer.finnFil();
-        //filedealer.writeFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
-        //filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
-        //allDays = filedealer.readFile("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\aurora");
-        allDays = filedealer.readFile(username);  
-        //System.out.println(allDays.get(0) + "; " + allDays.size() );
-
-        System.out.println("Now we append to the file");
-        Day enterDay = new Day("4", "kul", "9","pappa", "33"); 
-        allDays.add(enterDay);
-
-        filedealer.writeFile(username, allDays);
-
-        allDays = filedealer.readFile(username);  
-        System.out.println(allDays.get(0) + "; " + allDays.size() );
-    
-    } */
+    //skriver all data som fylles inn til fil
+    @Override
+    public void writeFile(String filename, Summary summary) throws IOException {
+        try{
+            PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + filename +".txt"))); //sier hvilken fil som skal skrives til (tilsvarende f i python)  
+            outFile.write(summary.toString()); //skriver toStringen fra Summary-klassen til filen
+            outFile.close(); //lukker filen
+        }
+        catch (FileNotFoundException e){ 
+            System.err.println("Klarer ikke å skrive til fil.");
+            //System.exit(1);
+        } // ***hvordan lager man illegalargumentexception når det allerede er filenotfoundexception? sånn som over?^
+    }
 }
