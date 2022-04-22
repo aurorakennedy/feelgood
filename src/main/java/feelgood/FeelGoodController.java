@@ -26,8 +26,7 @@ public class FeelGoodController {
     private FileReadWrite writeHandler = new FileDealer(); 
     private Day day;
     private ArrayList<Day> allDays = new ArrayList<>(); 
-
-    private FileDealer filedealer; 
+    private FileDealer filedealer = new FileDealer(); 
     private int mathAnswer;
    
 
@@ -93,7 +92,12 @@ public class FeelGoodController {
     @FXML
     void handleRead(){
         allDays = writeHandler.readFile(getFilename()); 
-        //System.out.println(writeHandler.readFile(getFilename()));
+        System.out.println(writeHandler.readFile(getFilename()));
+        getTidligereDag();
+    }
+
+    private void getTidligereDag(){
+        feedback.setText(filedealer.tidligereDag(getFilename()));
     }
 
     
