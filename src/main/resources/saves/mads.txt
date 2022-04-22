@@ -1,0 +1,8 @@
+6.0, fin, 5.0, håvard, 17, 17
+6.0, fin, 5.0, håvard, 17, 17
+2.0, Hyggelig, 4.0, Helene, 5, 5
+6.0, fin, 5.0, håvard, 17, 17
+6.0, fin, 5.0, håvard, 17, 17
+2.0, Hyggelig, 4.0, Helene, 5, 5
+4.0, kul, 7.0, trym, 16, 16
+5.0, fin, 7.0, ruben, 35, 35

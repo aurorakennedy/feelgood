@@ -6,36 +6,20 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class FileDealer implements FileReadWrite {
-   /*
-   //Dette er lagd kunn for main - tror vi kan slette det når vi har kobla til controlleren: 
-    //private String filename = ""; 
-   /* 
-    public FileDealer(String filename){ 
-        this.filename = filename;
-    }
-*/
-
-// ?? FÅ HJLEP AV STUDAS - hvordan få til førte linje under .getResorce, at vet hvor på pc den skal lagres. 
    
     public static String getFilePath(String filename){
         return FileDealer.class.getResource("src/main/resources/saves/").getFile() + filename + ".txt";
-        //String name = FileDealer.class.getResource("C:/Users/auror/OneDrive/Documents/Vår2022/Objekt/TDT4100_prosjekt_aurorke/src/main/resources/saves/").getFile() + filename + ".txt";
-        //return Path.of(System.getProperty("user.home"), "tdt4100", "feelgood");
-        //return ("C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt");
     }
 
     
     // ** Her prøver jeg å sjekke om filen funker eller ikke
     public void finnFil(String filename){
         try{ 
-            //fix this 
-           // String fullFilePath = "C:\\Users\\auror\\OneDrive\\Documents\\Vår2022\\Objekt\\TDT4100_prosjekt_aurorke\\src\\main\\resources\\saves\\" + filename + ".txt";
             String fullFilePath = "src/main/resources/saves/" + filename +".txt";
             PrintWriter printWriter = null;
 
@@ -98,7 +82,7 @@ public class FileDealer implements FileReadWrite {
     }
 
     public String tidligereDag(String filename){
-        if(readFile(filename).size() > 1){
+        if(readFile(filename).size() > 0){
             //ArrayList<Day> tidligereDager = new ArrayList<Day>();
             StringBuilder tidligereDager = new StringBuilder(); 
             //for (int i = 0; readFile(filename).size() > 0 ; i++){
