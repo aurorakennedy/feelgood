@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class FeelGoodApp extends Application {
 
     public static void main(String[] args) {
