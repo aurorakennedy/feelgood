@@ -15,18 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class FeelGoodController {
-    //overføres data fra fxml til variabler vi kan bruke i andre klasser
-    //starte metoder i de andre klassene
-    //som en main-metode
-    // Trenger ikke konstruktør // Kobler opp FXML med controlleren 
-    
 
     private FileReadWrite writeHandler = new FileDealer(); //gjør at vi kan bruke FileDealer klassen her
     private FileDealer filedealer = new FileDealer(); //*** dette er ikke interfacet, trenger vi begge??, hva gjør de...
     private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål i variabel
    
-
-
     @FXML
     public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn; //importerer FXML-TextField-feltene
 
@@ -64,7 +57,7 @@ public class FeelGoodController {
     }
 
 
-    //
+    //lager et Day-objekt som lagres i fil når man trykker på "lagre svar"-knappen
     @FXML
     private void lagreSvar() throws IOException {
         System.out.println("lagreSvar kjører"); //til oss
@@ -80,7 +73,7 @@ public class FeelGoodController {
             feilmelding.setHeaderText(e.getMessage());
             feilmelding.show();
         }
-
+        //lager ny fil for personer som ikke finnes fra før av (ved å kalle på writeFile())
         if (newDay != null) { //hvis den klarte å lage ny Day-objekt
             if (summary == null) { //hvis det ikke finnes Summary-fil fra før av
                 summary = new Summary(); //bruker har ikke en eksisterende fil - vi oppretter nytt summary objekt

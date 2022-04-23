@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class Summary {
+
+    FileDealer fileDealer; 
     //lager en liste hvor alle dagene ligger
     private ArrayList<Day> days = new ArrayList<Day>(); 
     //henter listen
@@ -127,7 +129,20 @@ public class Summary {
         String[] sleep = this.sleep().split(",");
         return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
-
+    
+    //*** er noe av dette unødvendig kode?
+    //Returnerer tidligere dager
+   //Z @Override
+    /*public String tidligere() {
+        StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
+        for( Day day : this.days) { //for dager in days
+            String [] enkelt = String.valueOf(day).split(", "); //lager en streng av hvert enkelt Day-objekt og splitter dette
+            //formaterer setningen som skal returneres og legges til StringBuilder-variabelen
+            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass. Komplementer: " + enkelt[1] + ". Timer søvn: " + enkelt[2] + ". Hvem du har satt pris på: " + enkelt[3] + "\nDitt svar på mattestykket:" + enkelt[4] + ". Faktisk svar på mattestykket:" + enkelt[5] +"\n\n");
+        }
+        return tidligereDager.toString(); //returnerer StringBuilder-variabelen
+    }*/
+    //gamle funksjonen
     //toString som returnerer summary som en string (brukes til "tidligere dager" tilbakemeldingen)
     @Override
     public String toString() {
