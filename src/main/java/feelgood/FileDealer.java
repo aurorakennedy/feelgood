@@ -9,10 +9,11 @@ import java.util.Scanner;
 public class FileDealer implements FileReadWrite {
 
     //gir plassering til filer
+    /*
     public static String getFilePath(String filename){
         return FileDealer.class.getResource("src/main/resources/saves/").getFile() + filename + ".txt";
     }
-
+*/
     
 
     //leser fil, returnerer filnavnet/brukernavnet sitt Summary-objekt

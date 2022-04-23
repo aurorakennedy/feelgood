@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 
 public class FeelGoodController {
 
+    private Person person;
     private FileReadWrite writeHandler = new FileDealer(); //gjør at vi kan bruke FileDealer klassen her
     private FileDealer filedealer = new FileDealer(); //*** dette er ikke interfacet, trenger vi begge??, hva gjør de...
     private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål i variabel
@@ -28,7 +29,39 @@ public class FeelGoodController {
     
     //metode som kjøres i det appen starter
     public void initialize(){
+        glassVann.setDisable(true);
+        komplement.setDisable(true);
+        timerSovn.setDisable(true);
+        verdigNavn.setDisable(true);
+        matteSum.setDisable(true);
         matteStykke(); // generer mattestykke og setter tekstfeltet
+    }
+
+    //***hvordan fungerer det med illegalargumentexception? Tar den inn denne messagen? nei tar inn fra person, men 
+    public void login(){
+        Person bruker = null;
+        if (brukernavn.getText().equals("")){
+            throw new IllegalArgumentException("TRALLALA");
+        }
+        try{
+            bruker = new Person(brukernavn.getText().toLowerCase());
+        }
+        catch (IllegalArgumentException e){
+            Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
+            feilmelding.setTitle("Feil"); 
+            feilmelding.setHeaderText("Feil i brukernavn");
+            feilmelding.setContentText(e.getMessage()); 
+            feilmelding.show();
+        }
+        if (bruker!=null){
+            glassVann.setDisable(false);
+            komplement.setDisable(false);
+            timerSovn.setDisable(false);
+            verdigNavn.setDisable(false);
+            matteSum.setDisable(false);
+        } else{
+
+        }
     }
     
 
@@ -45,6 +78,7 @@ public class FeelGoodController {
     }
 
 
+    //***kan denne erstattes av Person-klassen og login-metoden?
     //Henter brukernavnet fra "navn"-faltet og validerer dette. Returnerer filnavnet.
     private String getFilename(){
         String filename = this.brukernavn.getText().toLowerCase(); //henter filename/brukernavn fra TextField-feltet
@@ -52,7 +86,7 @@ public class FeelGoodController {
             return filename; //returnerer filnavnet
         }
         else{
-            throw new IllegalArgumentException("Brukernavnet kan kun bestå av ett ord. Det kan heller ikke være lengere enn 15 bokstaver.");
+            throw new IllegalArgumentException("TEEEEESSSSSTTTTBrukernavnet kan kun bestå av ett ord. Det kan heller ikke være lengere enn 15 bokstaver.");
         }
     }
 
