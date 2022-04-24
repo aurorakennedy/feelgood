@@ -41,8 +41,8 @@ public class FeelGoodController {
     public void login(){
         Person bruker = null;
         if (brukernavn.getText().equals("")){
-            throw new IllegalArgumentException("TRALLALA");
-        }
+            throw new IllegalArgumentException("Navnefeltet kan ikke stå tomt."); //skriver til terminal, men utløser ikke Alert-box
+        } //ingen else
         try{
             bruker = new Person(brukernavn.getText().toLowerCase());
         }
@@ -59,9 +59,7 @@ public class FeelGoodController {
             timerSovn.setDisable(false);
             verdigNavn.setDisable(false);
             matteSum.setDisable(false);
-        } else{
-
-        }
+        } //ingen else
     }
     
 
