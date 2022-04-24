@@ -147,7 +147,7 @@ public class Summary {
         for( Day day : this.days) { //for dager in days
             String [] enkelt = String.valueOf(day).split(", "); //lager en streng av hvert enkelt Day-objekt og splitter dette
             //formaterer setningen som skal returneres og legges til StringBuilder-variabelen
-            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass. Komplementer: " + enkelt[1] + ". Timer søvn: " + enkelt[2] + ". Hvem du har satt pris på: " + enkelt[3] + "\nDitt svar på mattestykket:" + enkelt[4] + ". Faktisk svar på mattestykket:" + enkelt[5] +"\n\n");
+            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass          Komplementer: " + enkelt[1] + "          Timer søvn: " + enkelt[2] + "\nHvem du har satt pris på: " + enkelt[3] + "          Ditt svar på mattestykket:" + enkelt[4] + "          Faktisk svar på mattestykket:" + enkelt[5] +"\n\n");
         }
         return tidligereDager.toString(); //returnerer StringBuilder-variabelen
     }

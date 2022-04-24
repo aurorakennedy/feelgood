@@ -8,7 +8,7 @@ public class Person {
 
     public Person(String name){
 
-        if (name.length()<15 && !(name.contains(" "))){ //sjekker at navne er kortere enn 15 bokstaver og ikke inneholder mellomrom 
+        if (!name.isEmpty() || name.length()<15 && !(name.contains(" "))){ //sjekker at navne er kortere enn 15 bokstaver og ikke inneholder mellomrom 
             this.name = name; 
         }
         else{

@@ -8,28 +8,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="817.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="feelgood.FeelGoodController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="feelgood.FeelGoodController">
    <children>
-      <Pane fx:id="questionPane" layoutX="53.0" layoutY="87.0" prefHeight="393.0" prefWidth="672.0" style="-fx-border-color: blue; -fx-border-width: 2; -fx-border-style: solid;">
+      <Pane fx:id="questionPane" layoutX="53.0" layoutY="87.0" prefHeight="364.0" prefWidth="672.0" style="-fx-background-color: #ddecfc; -fx-border-color: #9ac5f7; -fx-border-width: 2;">
          <children>
-            <Label layoutX="14.0" layoutY="25.0" prefHeight="23.0" prefWidth="361.0" text="Hvor mange glass vann har du drukket i dag?" textFill="#2487e4">
+            <Label layoutX="14.0" layoutY="25.0" prefHeight="23.0" prefWidth="361.0" text="Hvor mange glass vann har du drukket i dag?">
                <font>
                   <Font size="18.0" />
                </font></Label>
             <TextField fx:id="glassVann" layoutX="479.0" layoutY="19.0" prefHeight="26.0" prefWidth="86.0" promptText="Antall glass" />
-            <Label layoutX="14.0" layoutY="83.0" prefHeight="23.0" prefWidth="454.0" text="Har du sagt noe fint til noen i dag? Skriv komplementetene" textFill="#f2252f">
+            <Label layoutX="14.0" layoutY="83.0" prefHeight="23.0" prefWidth="454.0" text="Har du sagt noe fint til noen i dag? Skriv komplementetene">
                <font>
                   <Font size="18.0" />
                </font></Label>
             <TextField fx:id="komplement" layoutX="481.0" layoutY="79.0" prefHeight="26.0" prefWidth="83.0" promptText="snill, søt" />
-            <Label layoutX="15.0" layoutY="144.0" prefHeight="23.0" prefWidth="307.0" text="Hvor mange timer har du sovet i natt?" textFill="#85da85">
+            <Label layoutX="15.0" layoutY="144.0" prefHeight="23.0" prefWidth="307.0" text="Hvor mange timer har du sovet i natt?">
                <font>
                   <Font size="18.0" />
                </font></Label>
             <TextField fx:id="timerSovn" layoutX="480.0" layoutY="138.0" prefHeight="26.0" prefWidth="86.0" promptText="Antall timer" />
-            <Label layoutX="12.0" layoutY="200.0" prefHeight="23.0" prefWidth="321.0" text="Hvem har du satt ekstra pris på i dag?" textFill="#ee9e0a">
+            <Label layoutX="12.0" layoutY="200.0" prefHeight="23.0" prefWidth="321.0" text="Hvem har du satt ekstra pris på i dag?">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Font" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="verdigNavn" layoutX="479.0" layoutY="195.0" prefHeight="26.0" prefWidth="83.0" promptText="Ola" />
@@ -38,9 +38,9 @@
                <font>
                   <Font size="18.0" />
                </font></Text>
-            <Button fx:id="lagreSvar" layoutX="468.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#lagreSvar" text="Lagre svar" textAlignment="CENTER">
+            <Button fx:id="lagreSvar" layoutX="468.0" layoutY="306.0" mnemonicParsing="false" onMouseClicked="#lagreSvar" style="-fx-background-color: #fafacf;" text="Lagre svar" textAlignment="CENTER">
                <font>
-                  <Font name="Kannada Sangam MN" size="19.0" />
+                  <Font name="Kannada Sangam MN" size="17.0" />
                </font>
                <effect>
                   <DropShadow />
@@ -55,26 +55,37 @@
                   <Font size="18.0" />
                </font></Label>
             <TextField fx:id="brukernavn" layoutX="75.0" layoutY="31.0" prefHeight="26.0" prefWidth="115.0" />
-            <Button fx:id="login" layoutX="210.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#login" text="Log inn" textFill="#1197b2">
+            <Button fx:id="login" layoutX="197.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#login" text="Log inn">
                <font>
                   <Font size="15.0" />
                </font></Button>
+            <Text fx:id="feilBrukernavn" layoutX="73.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.71409606933594" />
          </children>
       </Pane>
-      <Button fx:id="oppsummering" layoutX="54.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#oppsummering" text="Få oppsummering">
+      <Button fx:id="oppsummering" layoutX="304.0" layoutY="459.0" mnemonicParsing="false" onMouseClicked="#oppsummering" style="-fx-background-color: #e8fab1;" text="Få oppsummering">
          <font>
-            <Font size="20.0" />
+            <Font name="Kannada Sangam MN" size="18.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
-      <Button fx:id="leseFil" layoutX="537.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#handleRead" prefHeight="29.0" prefWidth="162.0" text="Se tidligere føringer">
+      <Button fx:id="leseFil" layoutX="537.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#handleRead" prefHeight="29.0" prefWidth="162.0" style="-fx-background-color: pink;" text="Se tidligere føringer">
          <font>
-            <Font size="15.0" />
+            <Font name="Kannada Sangam MN" size="15.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
-      <Text fx:id="feedback" fill="#e94af2" layoutX="52.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tilbakemelding" wrappingWidth="682.324521808826">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
+      <Pane layoutX="49.0" layoutY="512.0" prefHeight="222.0" prefWidth="706.0" style="-fx-background-color: #d4fae5; -fx-border-color: #19c76b; -fx-border-width: 2;">
+         <children>
+            <Text fx:id="feedback" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="625.6157205392948">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </Pane>

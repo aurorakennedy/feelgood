@@ -25,7 +25,7 @@ public class FeelGoodController {
     public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn; //importerer FXML-TextField-feltene
 
     @FXML
-    private Text feedback, mathEquation; //importerer FXML-Text-feltene
+    private Text feedback, mathEquation, feilBrukernavn; //importerer FXML-Text-feltene
 
     
     //metode som kjøres i det appen starter
@@ -42,26 +42,32 @@ public class FeelGoodController {
     Person bruker = null;    
     //***denne må ryddes opp i
     public void login(){        
-        if (brukernavn.getText().equals("")){
-            throw new IllegalArgumentException("Navnefeltet kan ikke stå tomt."); //skriver til terminal, men utløser ikke Alert-box
-        } //ingen else
-        try{
-            bruker = new Person(brukernavn.getText().toLowerCase());
+        if (brukernavn.getText().isEmpty()){
+            feilBrukernavn.setText("Navn kan ikke være tomt.");
+            glassVann.setDisable(true); //gråer ut feltene 
+            komplement.setDisable(true);
+            timerSovn.setDisable(true);
+            verdigNavn.setDisable(true);
+            matteSum.setDisable(true);
+        } else{
+            try{
+                bruker = new Person(brukernavn.getText().toLowerCase());
+                glassVann.setDisable(false);
+                komplement.setDisable(false);
+                timerSovn.setDisable(false);
+                verdigNavn.setDisable(false);
+                matteSum.setDisable(false);
+                brukernavn.setDisable(true);
+                feilBrukernavn.setText("Du er logget inn som " + bruker.getName());
+            }
+            catch (IllegalArgumentException e){
+                /*Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
+                feilmelding.setTitle("Feil"); 
+                feilmelding.setHeaderText("Feil i brukernavn");
+                feilmelding.setContentText(e.getMessage()); 
+                feilmelding.show();*/
+            }
         }
-        catch (IllegalArgumentException e){
-            Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
-            feilmelding.setTitle("Feil"); 
-            feilmelding.setHeaderText("Feil i brukernavn");
-            feilmelding.setContentText(e.getMessage()); 
-            feilmelding.show();
-        }
-        if (bruker!=null){
-            glassVann.setDisable(false);
-            komplement.setDisable(false);
-            timerSovn.setDisable(false);
-            verdigNavn.setDisable(false);
-            matteSum.setDisable(false);
-        } //ingen else
     }
     
 
@@ -95,6 +101,14 @@ public class FeelGoodController {
 
         try { //prøver å lage nytt Day-objekt med tekstfeltene fra FXML-filen
             newDay = new Day(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Integer.parseInt(matteSum.getText()), this.mathAnswer);
+            brukernavn.setDisable(false);
+            feilBrukernavn.setText("Du må logge inn på nytt");
+            brukernavn.setText("");
+            glassVann.setDisable(true); //gråer ut feltene 
+            komplement.setDisable(true);
+            timerSovn.setDisable(true);
+            verdigNavn.setDisable(true);
+            matteSum.setDisable(true);
         } catch(IllegalArgumentException e){ //feilmeldinger fra validering blir printet i ALERT-box hvis utløst
             Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
             //feilmelding.setContentText(e.getMessage()); 
@@ -138,7 +152,6 @@ public class FeelGoodController {
             System.out.println(summary.calculations()); //til terminal 
             System.out.println(summary.motivationalMessage()); //til terminal
             feedback.setText(summary.motivationalMessage()); //melding til app 
-            feedback.setFill(Color.BLUE); //skriftfarge blå 
         }
     }
 
