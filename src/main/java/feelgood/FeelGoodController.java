@@ -125,7 +125,7 @@ public class FeelGoodController {
         //getTidligereDag();
         Summary summary = filedealer.readFile(getUserName()); //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
         if (summary != null) { //hvis filen ekisterer
-            feedback.setText(summary.toString()); //printes feedback i appen
+            feedback.setText(summary.tidligereString()); //printes feedback i appen
         }
     }
 
