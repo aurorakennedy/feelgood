@@ -64,7 +64,9 @@ public boolean getCorrectAnswer() {
     return this.correctAnswer;
 }
 
+//*** Usikker på hvor den brukes men vi trenger den!!!  */
 //toString som brukes når Day-objekter skrives til fil
+@Override
 public String toString(){
     return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
 }

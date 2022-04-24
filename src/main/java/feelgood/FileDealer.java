@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 public class FileDealer implements FileReadWrite {
-
+    private Day day; 
 
     //leser fil, returnerer filnavnet/brukernavnet sitt Summary-objekt
     @Override
