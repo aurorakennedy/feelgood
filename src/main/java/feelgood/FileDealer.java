@@ -8,24 +8,17 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 public class FileDealer implements FileReadWrite {
 
-    //gir plassering til filer
-    /*
-    public static String getFilePath(String filename){
-        return FileDealer.class.getResource("src/main/resources/saves/").getFile() + filename + ".txt";
-    }
-*/
-    
 
     //leser fil, returnerer filnavnet/brukernavnet sitt Summary-objekt
     @Override
-    public Summary readFile(String filename) {
+    public Summary readFile(String brukernavn) {
         Scanner scanner = null;
         Summary userSummary = null;
         
         try { //finner eksisterende fil 
-            scanner = new Scanner(new File("src/main/resources/saves/" + filename +".txt"));
+            scanner = new Scanner(new File("src/main/resources/saves/" + brukernavn +".txt"));
         } catch (FileNotFoundException e) { //utløser feilmelding hvis fil ikke eksisterer, men programmet fortsetter
-            System.err.println(filename + "finnes ikke fra før av. Koden kjører videre.");
+            System.err.println(brukernavn + "finnes ikke fra før av. Koden kjører videre.");
         }
             
         if (scanner != null) { //sjekker at fil er funnet, ellers hadde scanner vært null
@@ -45,9 +38,9 @@ public class FileDealer implements FileReadWrite {
 
     //skriver all data som fylles inn til fil
     @Override
-    public void writeFile(String filename, Summary summary) throws IOException {
+    public void writeFile(String brukernavn, Summary summary) throws IOException {
         try{
-            PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + filename +".txt"))); //sier hvilken fil som skal skrives til (tilsvarende f i python)  
+            PrintWriter outFile = new PrintWriter(new FileWriter(new File( "src/main/resources/saves/" + brukernavn +".txt"))); //sier hvilken fil som skal skrives til (tilsvarende f i python)  
             outFile.write(summary.toString()); //skriver toStringen fra Summary-klassen til filen
             outFile.close(); //lukker filen
         }

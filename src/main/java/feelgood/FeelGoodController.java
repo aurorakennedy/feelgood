@@ -16,7 +16,6 @@ import javafx.scene.text.Text;
 
 public class FeelGoodController {
 
-    private Person person;
     private FileReadWrite writeHandler = new FileDealer(); //gjør at vi kan bruke FileDealer klassen her
     private FileDealer filedealer = new FileDealer(); //*** dette er ikke interfacet, trenger vi begge??, hva gjør de...
     private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål i variabel
@@ -29,6 +28,7 @@ public class FeelGoodController {
     
     //metode som kjøres i det appen starter
     public void initialize(){
+        
         glassVann.setDisable(true);
         komplement.setDisable(true);
         timerSovn.setDisable(true);
@@ -38,8 +38,12 @@ public class FeelGoodController {
     }
 
     //***hvordan fungerer det med illegalargumentexception? Tar den inn denne messagen? nei tar inn fra person, men 
+    Person bruker = null;
+    //Person bruker;
+    
     public void login(){
-        Person bruker = null;
+       // bruker = new Person(brukernavn.getText().toLowerCase());
+        
         if (brukernavn.getText().equals("")){
             throw new IllegalArgumentException("TRALLALA");
         }
@@ -78,24 +82,19 @@ public class FeelGoodController {
     }
 
 
-    //***kan denne erstattes av Person-klassen og login-metoden?
-    //Henter brukernavnet fra "navn"-faltet og validerer dette. Returnerer filnavnet.
-    private String getFilename(){
-        String filename = this.brukernavn.getText().toLowerCase(); //henter filename/brukernavn fra TextField-feltet
-        if (filename.length()<15 && !(filename.contains(" "))){ //sjekker at navne er kortere enn 15 bokstaver og ikke inneholder mellomrom 
-            return filename; //returnerer filnavnet
-        }
-        else{
-            throw new IllegalArgumentException("TEEEEESSSSSTTTTBrukernavnet kan kun bestå av ett ord. Det kan heller ikke være lengere enn 15 bokstaver.");
-        }
+    //Henter brukernavnet fra "navn"-faltet og validerer dette. Returnerer navnet til personen.
+   
+    private String getUserName(){
+        String userName = this.brukernavn.getText().toLowerCase(); //henter filename/brukernavn fra TextField-feltet
+        Person person = new Person(userName); //Lager ett nytt person objekt med navne fra TextFiekd-feltet
+        return person.getName(); // Henter navnet fra getName funksjonen i Person - objektet 
     }
-
 
     //lager et Day-objekt som lagres i fil når man trykker på "lagre svar"-knappen
     @FXML
     private void lagreSvar() throws IOException {
         System.out.println("lagreSvar kjører"); //til oss
-        Summary summary = filedealer.readFile(getFilename()); //prøver å hente Summary-objekt fra fileDealer - blir enten et objekt eller null (hvis fil ikke eksisterer)
+        Summary summary = filedealer.readFile(getUserName()); //prøver å hente Summary-objekt fra fileDealer - blir enten et objekt eller null (hvis fil ikke eksisterer)
         Day newDay = null; //setter newDay til null
 
         try { //prøver å lage nytt Day-objekt med tekstfeltene fra FXML-filen
@@ -113,7 +112,7 @@ public class FeelGoodController {
                 summary = new Summary(); //bruker har ikke en eksisterende fil - vi oppretter nytt summary objekt
             } 
             summary.add(newDay); //har eksisterende Summary-fil og legger derfor til Day-objektet newDay i summary
-            writeHandler.writeFile(getFilename(), summary); //skriver newDay til fil
+            writeHandler.writeFile(getUserName(), summary); //skriver newDay til fil
         }
         // reset GUI elements
         glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear(); // ***er det mulig å ikke cleare hvis feilmelding??
@@ -124,9 +123,9 @@ public class FeelGoodController {
     //viser tidligere dager i app når man trykker på "se tidligere"-knapp
     @FXML
     void handleRead() {
-        System.out.println(writeHandler.readFile(getFilename()));
+        System.out.println(writeHandler.readFile(getUserName()));
         //getTidligereDag();
-        Summary summary = filedealer.readFile(getFilename()); //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
+        Summary summary = filedealer.readFile(getUserName()); //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
         if (summary != null) { //hvis filen ekisterer
             feedback.setText(summary.toString()); //printes feedback i appen
         }
@@ -137,7 +136,7 @@ public class FeelGoodController {
     //viser oppsumering i app når man trykker på "få oppsumering" - knapp 
     @FXML
     private void oppsummering(){
-        Summary summary = filedealer.readFile(getFilename()); // ***samme som i den over
+        Summary summary = filedealer.readFile(getUserName()); // ***samme som i den over
         if (summary != null) { //hvis fil eksisterer
             System.out.println("oppsummering kjører"); //til terminal
             System.out.println(summary.calculations()); //til terminal 
