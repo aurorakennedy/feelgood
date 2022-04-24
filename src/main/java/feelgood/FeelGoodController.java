@@ -3,13 +3,14 @@ package feelgood;
 import java.io.IOException;
 import java.util.Random;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -25,11 +26,11 @@ public class FeelGoodController {
 
     @FXML
     private Text feedback, mathEquation; //importerer FXML-Text-feltene
+
     
     //metode som kjøres i det appen starter
     public void initialize(){
-        
-        glassVann.setDisable(true);
+        glassVann.setDisable(true); //gråer ut feltene 
         komplement.setDisable(true);
         timerSovn.setDisable(true);
         verdigNavn.setDisable(true);
@@ -38,12 +39,9 @@ public class FeelGoodController {
     }
 
     //***hvordan fungerer det med illegalargumentexception? Tar den inn denne messagen? nei tar inn fra person, men 
-    Person bruker = null;
-    //Person bruker;
-    
-    public void login(){
-       // bruker = new Person(brukernavn.getText().toLowerCase());
-        
+    Person bruker = null;    
+    //***denne må ryddes opp i
+    public void login(){        
         if (brukernavn.getText().equals("")){
             throw new IllegalArgumentException("Navnefeltet kan ikke stå tomt."); //skriver til terminal, men utløser ikke Alert-box
         } //ingen else
@@ -91,7 +89,7 @@ public class FeelGoodController {
     //lager et Day-objekt som lagres i fil når man trykker på "lagre svar"-knappen
     @FXML
     private void lagreSvar() throws IOException {
-        System.out.println("lagreSvar kjører"); //til oss
+        System.out.println("lagreSvar() kjører"); //til oss
         Summary summary = filedealer.readFile(getUserName()); //prøver å hente Summary-objekt fra fileDealer - blir enten et objekt eller null (hvis fil ikke eksisterer)
         Day newDay = null; //setter newDay til null
 
