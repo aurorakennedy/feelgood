@@ -71,7 +71,7 @@ public class Summary {
     }
     
         
-    // -- Utregning appreciation --
+    // -- Utregning appreciation -- //*** Gå gjennom den her... 
     private String appreciation(){
         ArrayList<String> bestevennListe = new ArrayList<>();
         Set<String> bestevennSet = new HashSet<String> ();
