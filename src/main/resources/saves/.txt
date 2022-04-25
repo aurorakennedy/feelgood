@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 8.0, Fin, 7.0, Helene, 39, 39
 8.0, søt, 7.0, Silje, 21, 21
 8.0, søt, 7.0, silje, 22, 22
 4.0, rar, 8.0, eirik, 21, 21
 6.0, Snill, 6.0, Trude, 24, 24
 8.0, jjjj, 8.0, jjjjj, 24, 24
+=======
+5.0, ergerg, 6.0, ergerg, 13, 13
+5.0, rgrege, 6.0, grreger, 9, 9
+5.0, egerg, 6.0, gegre, 9, 11
+5.0, gerge, 4.0, rgeg, 16, 16
+7.0, jhjh, 8.0, jhjhjh, 16, 16
+6.0, ghj, 4.0, hgf, 6, 6
+7.0, hgf, 8.0, bvc, 30, 30
+5.0, ergerg, 5.0, rgerg, 27, 27
+>>>>>>> 49f4734dcf2f16e04587edc1b18f90076c89e460
