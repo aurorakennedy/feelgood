@@ -6,19 +6,16 @@ import java.util.Random;
 import java.util.Set;
 
 public class Summary {
+    FileDealer fileDealer;  //gjør at vi kan bruke fileDealer-metoder her
 
-    FileDealer fileDealer; 
-    Person person;
-    //lager en liste hvor alle dagene ligger
-    private ArrayList<Day> days = new ArrayList<Day>(); 
-    //henter listen
-    public ArrayList<Day> getDays() {
-        return this.days;
-    }
-
+    private ArrayList<Day> days = new ArrayList<Day>(); //liste med alle dagene
     //legger til day-objekter i days-listen
     public void add(Day day) throws IllegalArgumentException{ 
         days.add(day); 
+    }
+    //henter listen
+    public ArrayList<Day> getDays() {
+        return this.days;
     }
 
 
@@ -26,23 +23,24 @@ public class Summary {
      public ArrayList<String> calculations(){ 
         ArrayList<String> results = new ArrayList<>(); // har listen inni metoden, slik at den lages på nytt hver gang -da slipper vi å cleare den
         results.add(""+sumWater()); 
-        results.add(longestCompliment()); // Blir det den oppdaterete longest her eller blir det den første vi satt?? 
+        results.add(longestCompliment());
         results.add(sleep());
         results.add(appreciation()); 
         results.add(math());
+        System.out.println("results:" + results); //til terminal (fjernes)
         return results;
-        }
+    }
         
 
     // -- Utregning av vann -- 
     private double sumWater(){
         double glassesOfWater = 0; 
         double litersOfWater; 
-        for (int i=0; i < days.size(); i++){  // i - itererer gjennom dagene
-            glassesOfWater += days.get(i).getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
+        for (Day day : days){  //itererer gjennom dagene
+            glassesOfWater += day.getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
         }
         litersOfWater = glassesOfWater*0.2; 
-        return litersOfWater; 
+        return litersOfWater;
     }
 
     // -- Utregning compliments --
@@ -110,7 +108,7 @@ public class Summary {
                 return komplimentResult;         
             }
         }
-        return "mammaen din.";
+        return "mammaen din";
     }
 
     // -- Utregning math --
@@ -125,24 +123,24 @@ public class Summary {
     }
 
 
-    //Returnerer hele oppsummeringen
-    public String motivationalMessage() {
+    //toString til "Se oppsummering"-knappen
+    public String motivationalMessage(String brukernavn) {
         String[] sleep = this.sleep().split(",");
-        return "Bra gjennomført, " + /*person.getName() +*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter vann\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r). \nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
-    }
-    
-    //Skriver til fil -- brukes i  writeFile i FileDealer
-    @Override
-    public String toString() {
-        StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
-        for( Day day : this.days) { //for dager in days
-            tidligereDager.append(day); //legger til dager i tidligereDager
-            tidligereDager.append("\n");  //lager linjeskift mellom dagene
-        }
-        return tidligereDager.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
+        return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + "liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
 
-    //Lager en toString til "Se Tidligere" - kanppen, brukes i controlleren 
+    //toString som skriver dager til fil
+    @Override
+    public String toString() {
+        StringBuilder stringTilFil = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
+        for( Day day : this.days) { //for dager in days
+            stringTilFil.append(day); //legger til dager i tidligereDager
+            stringTilFil.append("\n");  //lager linjeskift mellom dagene
+        }
+        return stringTilFil.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
+    }
+
+    //toString til "se tidligere"-knappen
     public String tidligereString() {
         StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
         for( Day day : this.days) { //for dager in days
