@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="feelgood.FeelGoodController">
    <children>
-      <Pane fx:id="questionPane" layoutX="23.0" layoutY="99.0" prefHeight="364.0" prefWidth="625.0" style="-fx-background-color: #ddecfc; -fx-border-color: #9ac5f7; -fx-border-width: 2;">
+      <Pane fx:id="questionPane" layoutX="17.0" layoutY="325.0" prefHeight="364.0" prefWidth="625.0" style="-fx-background-color: #ddecfc; -fx-border-color: #9ac5f7; -fx-border-width: 2;">
          <children>
             <Label layoutX="14.0" layoutY="25.0" prefHeight="23.0" prefWidth="361.0" text="Hvor mange glass vann har du drukket i dag?">
                <font>
@@ -48,7 +48,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane prefHeight="83.0" prefWidth="300.0">
+      <Pane prefHeight="83.0" prefWidth="378.0">
          <children>
             <Label layoutX="15.0" layoutY="32.0" prefHeight="23.0" prefWidth="64.0" text="Navn: ">
                <font>
@@ -59,10 +59,10 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Text fx:id="feilBrukernavn" layoutX="73.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.71409606933594" />
+            <Text fx:id="feilBrukernavn" layoutX="75.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="293.71409606933594" />
          </children>
       </Pane>
-      <Button fx:id="oppsummering" layoutX="704.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#oppsummering" style="-fx-background-color: #e8fab1;" text="Få oppsummering">
+      <Button fx:id="oppsummering" layoutX="704.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#oppsummering" style="-fx-background-color: #e8fab1;" text="Se oppsummering">
          <font>
             <Font name="Kannada Sangam MN" size="20.0" />
          </font>
@@ -70,7 +70,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="leseFil" layoutX="1137.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#handleRead" prefHeight="29.0" prefWidth="162.0" style="-fx-background-color: #e8fab1 #e8fab1;" text="Se tidligere føringer">
+      <Button fx:id="leseFil" layoutX="1137.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#handleRead" prefHeight="29.0" prefWidth="162.0" style="-fx-background-color: #e8fab1 #e8fab1;" text="Tidligere føringer">
          <font>
             <Font name="Kannada Sangam MN" size="15.0" />
          </font>
@@ -82,9 +82,23 @@
          <children>
             <Text fx:id="feedback" layoutX="26.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="520.8767068674198">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="16.0" layoutY="92.0" prefHeight="220.0" prefWidth="623.0" style="-fx-background-color: #feedf3; -fx-border-color: #fbcbdc; -fx-border-width: 2;">
+         <children>
+            <Text fx:id="feedback1" layoutX="15.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vekommen til FeedGood- appen!" wrappingWidth="520.8767068674198">
+               <font>
+                  <Font name="Kannada Sangam MN" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="20.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slik fungerer appen: " wrappingWidth="377.89232635498047" />
+            <Text layoutX="23.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.  Logg inn" wrappingWidth="85.73783111572266" />
+            <Text layoutX="22.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Fyll inn dagens svar, og lagre" wrappingWidth="248.39605095002526" />
+            <Text layoutX="23.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Etter noen dagers føringer, kan du trykke på &quot;Se oppsummering&quot; for å få en hyggelig tilbakemelding" wrappingWidth="570.1682219705331" />
+            <Text layoutX="23.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.  Hvis du er nysgjerrig på hva du har svart tidligere, kan du trykke på &quot;Tidligere føringer&quot;" wrappingWidth="570.1682219705331" />
          </children>
       </Pane>
    </children>

@@ -20,7 +20,7 @@ public class Day {
         if (compliments.length()>2) {
             this.compliments=compliments;
         } else{
-            throw new IllegalArgumentException("Du må skrive minimum et komplement.");
+            throw new IllegalArgumentException("Ikke gyldig komplement.");
         }
         if (sleep>=0 && sleep<24) {
             this.sleep= sleep;
@@ -30,7 +30,7 @@ public class Day {
         if (appreciation.length()>1 && appreciation.length()<15) {
             this.appreciation = appreciation;
         } else{
-            throw new IllegalArgumentException("Navnet du har oppgitt er enten for kort eller for langt.");
+            throw new IllegalArgumentException("Ikke gyldig navn på person du har satt pris på.");
         }
         if (math>(actualAnswer-3) && math<(actualAnswer+3)) {
             this.math= math;
@@ -64,7 +64,6 @@ public boolean getCorrectAnswer() {
     return this.correctAnswer;
 }
 
-//*** Usikker på hvor den brukes men vi trenger den!!!  */
 //toString som brukes når Day-objekter skrives til fil
 @Override
 public String toString(){

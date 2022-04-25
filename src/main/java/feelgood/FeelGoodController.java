@@ -7,12 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class FeelGoodController {
@@ -102,7 +96,7 @@ public class FeelGoodController {
         try { //prøver å lage nytt Day-objekt med tekstfeltene fra FXML-filen
             newDay = new Day(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Integer.parseInt(matteSum.getText()), this.mathAnswer);
             brukernavn.setDisable(false);
-            feilBrukernavn.setText("Du må logge inn på nytt");
+            feilBrukernavn.setText("Får å gjøre en ny føring, må du logge inn på nytt");
             brukernavn.setText("");
             glassVann.setDisable(true); //gråer ut feltene 
             komplement.setDisable(true);
@@ -111,9 +105,9 @@ public class FeelGoodController {
             matteSum.setDisable(true);
         } catch(IllegalArgumentException e){ //feilmeldinger fra validering blir printet i ALERT-box hvis utløst
             Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
-            //feilmelding.setContentText(e.getMessage()); 
+            feilmelding.setContentText(e.getMessage()); 
             feilmelding.setTitle("Feil"); 
-            feilmelding.setHeaderText(e.getMessage());
+            //feilmelding.setHeaderText(e.getMessage());
             feilmelding.show();
         }
         //lager ny fil for personer som ikke finnes fra før av (ved å kalle på writeFile())
@@ -154,14 +148,4 @@ public class FeelGoodController {
             feedback.setText(summary.motivationalMessage()); //melding til app 
         }
     }
-
-  
-    /*
-    private void bilde(){
-        Pane pane = new Pane();
-        Image image = new Image("avatar.png");
-        ImageView imageview = new ImageView(image);
-        pane.getChildren().add(imageview);
-        //imageview.setImage(image);
-    }*/
 }

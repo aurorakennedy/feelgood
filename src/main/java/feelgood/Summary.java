@@ -8,6 +8,7 @@ import java.util.Set;
 public class Summary {
 
     FileDealer fileDealer; 
+    Person person;
     //lager en liste hvor alle dagene ligger
     private ArrayList<Day> days = new ArrayList<Day>(); 
     //henter listen
@@ -127,7 +128,7 @@ public class Summary {
     //Returnerer hele oppsummeringen
     public String motivationalMessage() {
         String[] sleep = this.sleep().split(",");
-        return "Bra gjennomført, " + /*Person.getName()*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter \nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nVilt! Du har sovet i " + sleep[0] + " dager og " + sleep[1] + " timer. \nDet er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
+        return "Bra gjennomført, " + /*person.getName() +*/ " \nDu var flink, du drakk " + calculations().get(0) + "liter vann\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + "\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r). \nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + "\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
     
     //Skriver til fil -- brukes i  writeFile i FileDealer
@@ -147,7 +148,7 @@ public class Summary {
         for( Day day : this.days) { //for dager in days
             String [] enkelt = String.valueOf(day).split(", "); //lager en streng av hvert enkelt Day-objekt og splitter dette
             //formaterer setningen som skal returneres og legges til StringBuilder-variabelen
-            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass          Komplementer: " + enkelt[1] + "          Timer søvn: " + enkelt[2] + "\nHvem du har satt pris på: " + enkelt[3] + "          Ditt svar på mattestykket:" + enkelt[4] +"\n\n");
+            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass     Komplement(er): " + enkelt[1] + "     Timer søvn: " + enkelt[2] + "\nHvem du har satt pris på: " + enkelt[3] + "     Ditt svar på mattestykket: " + enkelt[4] +"\n\n");
         }
         return tidligereDager.toString(); //returnerer StringBuilder-variabelen
     }
