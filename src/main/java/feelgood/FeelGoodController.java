@@ -152,6 +152,7 @@ public class FeelGoodController {
             System.out.println(summary.calculations()); //til terminal 
             System.out.println(summary.motivationalMessage()); //til terminal
             feedback.setText(summary.motivationalMessage()); //melding til app 
+            
         }
     }
 
