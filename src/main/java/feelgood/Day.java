@@ -1,4 +1,5 @@
 package feelgood;
+
 //Day- 
 public class Day {
     private double water;
@@ -17,7 +18,7 @@ public class Day {
         } else{
             throw new IllegalArgumentException("Ikke realistisk mengde vann.");
         }
-        if (compliments.length()>2) {
+        if (compliments.length()>2 && !compliments.contains(" ")) {
             this.compliments=compliments;
         } else{
             throw new IllegalArgumentException("Ikke gyldig komplement.");
