@@ -54,7 +54,7 @@ public double getSleep() {
     return sleep;
 }
 public String getAppreciation() {
-    return appreciation;
+    return appreciation.toLowerCase(); // Gjør alle bokstavene til små i verdsatte navn 
 }
 public int getMath() {
     return math;

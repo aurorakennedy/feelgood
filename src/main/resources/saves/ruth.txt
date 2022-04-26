@@ -1,0 +1,3 @@
+7.0, Snill, 8.0, Heidi, 9, 9
+5.0, Flink, 4.0, barbra, 19, 19
+8.0, super morsom, 8.0, heidi, 18, 18
