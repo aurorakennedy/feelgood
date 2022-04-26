@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class PersonTest {
 
     private Person person; 
-
+/*
     @BeforeEach // Lager dagen som vi skal teste, testene våres på:
     private void creatPerson(){
         person = new Person("klara");
@@ -22,5 +22,5 @@ public class PersonTest {
 	    Assertions.assertThrows(IllegalArgumentException.class, () -> {
 		    new Person("kkkkkkkkkkeeeeeeeeeeee"); 
 	    });
-    }
+    }*/
 }   

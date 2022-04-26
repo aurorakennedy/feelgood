@@ -40,7 +40,7 @@ public class Summary {
             glassesOfWater += day.getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
         }
         litersOfWater = glassesOfWater*0.2; 
-        return litersOfWater;
+        return Math.round(litersOfWater * 100.0) / 100.0; //runder av resultatet
     }
 
     // -- Utregning compliments --
@@ -112,10 +112,10 @@ public class Summary {
     }
 
     // -- Utregning math --
-    private String math(){
-        int antallRiktige=0;
-        for (int i=0; i < days.size(); i++){ 
-            if(days.get(i).getCorrectAnswer()){
+    private String math(){ //regner ut antall totale riktige svar på mattespørsmålet
+        int antallRiktige=0; //setter variabelen til 0
+        for (Day day : days){ //for alle dager i days-lista
+            if(day.getCorrectAnswer()){ //hvis 
                 antallRiktige+=1;
             } 
         }

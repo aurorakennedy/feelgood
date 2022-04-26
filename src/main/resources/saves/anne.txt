@@ -1,0 +1,4 @@
+6.0, erg, 5.0, erge, 6, 6
+9.0, gerer, 6.0, th, 23, 23
+7.0, ergerg, 5.0, ergerg, 36, 36
+2.0, wgwg, 4.0, rgrge, 11, 11
