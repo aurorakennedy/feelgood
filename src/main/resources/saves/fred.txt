@@ -1,6 +1,0 @@
-7.0, hhhh, 8.0, Ruben, 22, 22
-5.0, gggg, 7.0, Silje, 21, 21
-7.0, gggg, 4.0, Eirik, 24, 24
-8.0, hhh, 5.0, Frida, 34, 34
-8.0, hhh, 5.0, Eirik, 15, 15
-7.0, hhhh, 6.0, Eirik, 4, 4

@@ -10,7 +10,7 @@ public class FileDealer implements FileReadWrite {
 
     //leser fil, returnerer brukernavnet sitt Summary-objekt
     @Override
-    public Summary readFile(String brukernavn) /*throws IOException ?? */ {
+    public Summary readFile(String brukernavn) {
         Scanner scanner = null;
         Summary userSummary = null;
         
