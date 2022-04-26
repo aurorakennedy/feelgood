@@ -35,7 +35,7 @@ public class Day {
         if (math>(actualAnswer-3) && math<(actualAnswer+3)) {
             this.math= math;
             this.actualAnswer = actualAnswer;
-            this.correctAnswer = (this.math == this.actualAnswer);
+            this.correctAnswer = (this.math == this.actualAnswer); //setter correktAnswer til true hvis math og actualAnswer er like
         } else{
             throw new IllegalArgumentException("Du får et forsøk til på mattestykket :)");
         }
@@ -61,7 +61,7 @@ public int getMath() {
 }
 
 public boolean getCorrectAnswer() {
-    return this.correctAnswer;
+    return correctAnswer;
 }
 
 //toString som brukes når Day-objekter skrives til fil
