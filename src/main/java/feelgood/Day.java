@@ -1,7 +1,5 @@
 package feelgood;
 
-import java.util.regex.Pattern;
-
 //Day- 
 public class Day {
     private double water;
