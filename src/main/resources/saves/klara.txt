@@ -1,4 +1,2 @@
-6.0, hhh, 8.0, hhh, 24, 24
-9.0, jjjj, 6.0, ggg, 26, 26
-7.0, nhh, 6.0, hh, 38, 38
-2.0, gggg, 7.0, hhh, 18, 18
+5.0, ergerg, 5.0, ergerg, 18, 18
+6.0, funnywii, 8.0, aurora, 38, 38

@@ -34,99 +34,84 @@ public class Summary {
 
     // -- Utregning av vann -- 
     private double sumWater(){
-        double glassesOfWater = 0; 
-        double litersOfWater; 
-        for (Day day : days){  //itererer gjennom dagene
-            glassesOfWater += day.getWater();  //går inn i enkelt dag-->kjører getWater funksjonen for denne dagen og legger til glassesOfWater
+        double glassesOfWater = 0; //setter totalt antall glass til 0
+        for (Day day : days){  //for alle dagene i days-listen
+            glassesOfWater += day.getWater(); //henter antall glass for enkelt dag og legger til i totalt antall glass
         }
-        litersOfWater = glassesOfWater*0.2; 
-        return litersOfWater;
+        double litersOfWater = glassesOfWater*0.2; //regner om fra glass til liter
+        return Math.round(litersOfWater * 100.0) / 100.0; //runder av resultatet
     }
 
     // -- Utregning compliments --
     private String longestCompliment(){
-        String longest = "";
-        for (Day day : days){
-            String komplement = day.getCompliments(); 
-            if(komplement.length() > longest.length()){
-                longest = komplement;
+        String longest = ""; //setter tom variabel som skal være det lengste komplementet
+        for (Day day : days){ //for alle dagene i days
+            String komplement = day.getCompliments(); //setter komplementet i dagen i egen variabel
+            if(komplement.length() > longest.length()){ //hvis komplementet er lenger enn det lengste komplementet 
+                longest = komplement; //setter det nye lengste inn i lengst-variabelen
             } 
         }
-    return longest;
+        return longest; //returnerer det lengste komplementet
     }
 
-
+    //***burde denne egt returneres som en double? 
     // -- Utregning sleep --
     private String sleep(){
-        double hoursSleep = 0;
-        double daysSleep;
-        double modulo; 
-        for (Day day : days){  // i - itererer gjennom dagene
-            hoursSleep += day.getSleep();  //går inn i enkelt dag-->kjører getSleep funksjonen for denne dagen og legger til hoursSleep
+        double hoursSleep = 0; //totalt antall timer
+        for (Day day : days){  //for alle dagene i days
+            hoursSleep += day.getSleep(); //legger til antall timer hver dag til totalt antall timer
         }
-        daysSleep = Math.floor(hoursSleep/24);
-        modulo = Math.round(hoursSleep%24);
-        String sleep = (""+daysSleep+ "," +modulo);
-        return sleep;
+        double daysSleep = Math.floor(hoursSleep/24); //regner ut hvor mange dager antall timer tilsvarer
+        double modulo = Math.round(hoursSleep%24); //regner ut resten av timer etter antall dager er satt
+        return(""+daysSleep+ "," +modulo); //returnerer i ønsket format
     }
     
         
-    // -- Utregning appreciation -- //*** Gå gjennom den her... 
+    // -- Utregning appreciation -- 
     private String appreciation(){
-        System.out.println("test");
-        ArrayList<String> bestevennListe = new ArrayList<>();
-        Set<String> bestevennSet = new HashSet<String> ();
-        // Legger til hvert element i listen og sett
+        ArrayList<String> bestevennListe = new ArrayList<>(); //lager liste
+        Set<String> bestevennSet = new HashSet<String> (); //lager sett
         for (Day day : days){
-            bestevennListe.add(day.getAppreciation());
-            bestevennSet.add(day.getAppreciation());
+            bestevennListe.add(day.getAppreciation()); //legger til navn i liste
+            bestevennSet.add(day.getAppreciation()); //legger til navn i sett
         }
-
-        //da finnes det duplikat og vi må finne den som er repetert oftest
-        if (bestevennSet.size() < bestevennListe.size()){
-            String bestevenn = ""; 
-            int count = 0; 
-                for(int i = 0; i <bestevennListe.size(); i++){
-                    String midlertidigBestevenn = bestevennListe.get(i); // elemente vi er på nå
-                    int tempCount = 0; //for å telle elementene 
-                    for( int p=0; p<bestevennListe.size(); p++ ){
-                        if(bestevennListe.get(p).equals(midlertidigBestevenn)){ //går gjennom alle og sjekker om de er like til tempelement 
-                            tempCount += 1; 
-                        }
-                    if ( tempCount > count){ // tror det lagrer tempElement some element hvis den har større count 
-                        bestevenn = midlertidigBestevenn; 
-                        count = tempCount; 
+        if (bestevennSet.size() < bestevennListe.size()){ //sjekker om det finnes duplikaster i lista
+            String bestevenn = ""; //setter variabel for tomt navn
+            int highestCount = 0; //setter variabel for teller
+            for(int i = 0; i <bestevennListe.size(); i++){ //itererer gjennom navn i bestevennlista
+                String venn  = bestevennListe.get(i); // navnet vi er på nå
+                int teller = 0; //for å telle elementene 
+                for( int j=0; j<bestevennListe.size(); j++ ){ //iterer gjennom navn i bestevennlista igjen
+                    if(bestevennListe.get(j).equals(venn)){ //sjekker om hvert enkelt navn er likt venn
+                        teller += 1; //hvis ja øker telleren (det finnes flere av navnet)
                     }
-                    } 
+                if ( teller > highestCount){ //hvis teller blir høyere enn den som allerede er høyest
+                    bestevenn = venn; //ny bestevenn
+                    highestCount = teller; //ny highestCount
                 }
-            return bestevenn; 
-        
-        //return "Set" + bestevennSet + "Liste:" + bestevennListe;
-        }
-        else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
-                //returner random person fra liste/set
-            Random random = new Random(); /// importerer her random 
-            int randomeNumber = random.nextInt(bestevennListe.size()); 
-                // nextInt er en funskjon fra nett, litt usikker på hva den gjør men tror den bare sier ett tall i listen sin størrelse 
-            String komplimentResult = bestevennListe.get(randomeNumber);
-                // her finner vi da ett kompliment i listen 
-            return komplimentResult;         
+                } 
             }
+            return bestevenn; 
         }
+        else{ 
+            //returner random person fra liste/set
+            Random random = new Random(); /// importerer random
+            int plassering = random.nextInt(bestevennListe.size()); //finner tilfeldig tall fra 0 til lengden på bestevennlista
+            String venn = bestevennListe.get(plassering); //henter navn på tilfeldig plassering
+            return venn;
+        }
+    }
 
-        
-    //return "mammaen din";
-    //}
 
     // -- Utregning math --
-    private String math(){
-        int antallRiktige=0;
-        for (int i=0; i < days.size(); i++){ 
-            if(days.get(i).getCorrectAnswer()){
-                antallRiktige+=1;
+    private String math(){ //regner ut antall totale riktige svar på mattespørsmålet
+        int antallRiktige=0; //setter variabelen til 0
+        for (Day day : days){ //for alle dager i days-lista
+            if(day.getCorrectAnswer()){ //hvis getCorrectAnswer() verdien i hver dag er true
+                antallRiktige+=1; //telles én for hver riktige i antallRiktige-variabelen
             } 
         }
-    return antallRiktige + "";
+        return antallRiktige + ""; //returnerer antall riktige som en streng
     }
 
 
@@ -136,7 +121,7 @@ public class Summary {
         return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + "liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
 
-    //toString som skriver dager til fil 
+    //toString som skriver dager til fil
     @Override
     public String toString() {
         StringBuilder stringTilFil = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String

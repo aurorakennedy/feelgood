@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 public class FeelGoodController {
 
     private FileDealer filedealer = new FileDealer(); //gjør at vi kan bruke FileDealer-klassen her
-    private FileReadWrite fileReadWrite = new FileDealer(); //interfacet til FileDealer-klassen, er det nødvendig? hvorfor?
     private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål i variabel
     private Person bruker; //gjør at vi kan bruke Person-klassen her
     
@@ -119,7 +118,7 @@ public class FeelGoodController {
             } 
             summary.add(newDay); //har eksisterende Summary-fil og legger derfor til Day-objektet newDay i summary
             bruker.setSummary(summary); //setter den oppdaterte summary på bruker-Personen
-            fileReadWrite.writeFile(bruker.getName(), summary); //skriver newDay til fil
+            filedealer.writeFile(bruker.getName(), summary); //skriver newDay til fil
         }
     }
 
@@ -136,7 +135,7 @@ public class FeelGoodController {
     //viser alle day-objektene i Summary når man trykker på "se tidligere"-knapp
     @FXML
     void seTidligere() {
-        System.out.println(fileReadWrite.readFile(bruker.getName()));
+        System.out.println(filedealer.readFile(bruker.getName()));
         //getTidligereDag();
         Summary summary = filedealer.readFile(bruker.getName()); //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
         if (summary != null) { //hvis filen ekisterer
