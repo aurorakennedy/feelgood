@@ -46,8 +46,8 @@ public class Summary {
     // -- Utregning compliments --
     private String longestCompliment(){
         String longest = "";
-        for (int i=0; i < days.size(); i++){
-            String komplement = days.get(i).getCompliments(); 
+        for (Day day : days){
+            String komplement = day.getCompliments(); 
             if(komplement.length() > longest.length()){
                 longest = komplement;
             } 
@@ -61,8 +61,8 @@ public class Summary {
         double hoursSleep = 0;
         double daysSleep;
         double modulo; 
-        for (int i=0; i < days.size(); i++){  // i - itererer gjennom dagene
-            hoursSleep += days.get(i).getSleep();  //går inn i enkelt dag-->kjører getSleep funksjonen for denne dagen og legger til hoursSleep
+        for (Day day : days){  // i - itererer gjennom dagene
+            hoursSleep += day.getSleep();  //går inn i enkelt dag-->kjører getSleep funksjonen for denne dagen og legger til hoursSleep
         }
         daysSleep = Math.floor(hoursSleep/24);
         modulo = Math.round(hoursSleep%24);
@@ -73,21 +73,23 @@ public class Summary {
         
     // -- Utregning appreciation -- //*** Gå gjennom den her... 
     private String appreciation(){
+        System.out.println("test");
         ArrayList<String> bestevennListe = new ArrayList<>();
         Set<String> bestevennSet = new HashSet<String> ();
-        for (int i=0; i < days.size(); i++){
-            bestevennListe.add(days.get(i).getAppreciation());
-            bestevennSet.add(days.get(i).getAppreciation());
-            if (bestevennSet.size() < bestevennListe.size()){
-                //da finnes det duplikat og vi må finne den som er repetert oftest
-                // [snill, søt, morsom]
-                String bestevenn = ""; 
-                int count = 0; 
+        for (Day day : days){
+            bestevennListe.add(day.getAppreciation());
+            bestevennSet.add(day.getAppreciation());
+        }
+
+        //da finnes det duplikat og vi må finne den som er repetert oftest
+        if (bestevennSet.size() < bestevennListe.size()){
+            String bestevenn = ""; 
+            int count = 0; 
                 for(int j = 0; j <bestevennListe.size(); j++){
-                    String midlertidigBestevenn = bestevennListe.get(i); // elemente vi er på nå
+                    String midlertidigBestevenn = bestevennListe.get(j); // elemente vi er på nå
                     int tempCount = 0; //for å telle elementene 
                     for( int p=0; p<bestevennListe.size(); p++ ){
-                        if(bestevennListe.get(i).equals(midlertidigBestevenn)){ //går gjennom alle og sjekker om de er like til tempelement 
+                        if(bestevennListe.get(p).equals(midlertidigBestevenn)){ //går gjennom alle og sjekker om de er like til tempelement 
                             tempCount += 1; 
                         }
                     if ( tempCount > count){ // tror det lagrer tempElement some element hvis den har større count 
@@ -96,9 +98,11 @@ public class Summary {
                     }
                     } 
                 }
-                return bestevenn; 
-            }
-            else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
+                //return bestevenn; 
+        
+        return "Set" + bestevennSet + "Liste:" + bestevennListe;
+            //}
+            /*else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
                 //returner random person fra liste/set
                 Random random = new Random(); /// importerer her random 
                 int randomeNumber = random.nextInt(bestevennListe.size()); 
@@ -106,9 +110,11 @@ public class Summary {
                 String komplimentResult = bestevennListe.get(randomeNumber);
                 // her finner vi da ett kompliment i listen 
                 return komplimentResult;         
-            }
-        }
-        return "mammaen din";
+            }*/
+        //}
+
+        
+        //return "mammaen din";
     }
 
     // -- Utregning math --
@@ -129,7 +135,7 @@ public class Summary {
         return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + "liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
 
-    //toString som skriver dager til fil
+    //toString som skriver dager til fil 
     @Override
     public String toString() {
         StringBuilder stringTilFil = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
