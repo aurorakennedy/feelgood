@@ -76,6 +76,7 @@ public class Summary {
         System.out.println("test");
         ArrayList<String> bestevennListe = new ArrayList<>();
         Set<String> bestevennSet = new HashSet<String> ();
+        // Legger til hvert element i listen og sett
         for (Day day : days){
             bestevennListe.add(day.getAppreciation());
             bestevennSet.add(day.getAppreciation());
@@ -85,8 +86,8 @@ public class Summary {
         if (bestevennSet.size() < bestevennListe.size()){
             String bestevenn = ""; 
             int count = 0; 
-                for(int j = 0; j <bestevennListe.size(); j++){
-                    String midlertidigBestevenn = bestevennListe.get(j); // elemente vi er på nå
+                for(int i = 0; i <bestevennListe.size(); i++){
+                    String midlertidigBestevenn = bestevennListe.get(i); // elemente vi er på nå
                     int tempCount = 0; //for å telle elementene 
                     for( int p=0; p<bestevennListe.size(); p++ ){
                         if(bestevennListe.get(p).equals(midlertidigBestevenn)){ //går gjennom alle og sjekker om de er like til tempelement 
@@ -98,24 +99,24 @@ public class Summary {
                     }
                     } 
                 }
-                //return bestevenn; 
+            return bestevenn; 
         
-        return "Set" + bestevennSet + "Liste:" + bestevennListe;
-            //}
-            /*else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
+        //return "Set" + bestevennSet + "Liste:" + bestevennListe;
+        }
+        else{ // https://www.codegrepper.com/code-examples/java/picking+a+random+string+from+string+array+java
                 //returner random person fra liste/set
-                Random random = new Random(); /// importerer her random 
-                int randomeNumber = random.nextInt(bestevennListe.size()); 
+            Random random = new Random(); /// importerer her random 
+            int randomeNumber = random.nextInt(bestevennListe.size()); 
                 // nextInt er en funskjon fra nett, litt usikker på hva den gjør men tror den bare sier ett tall i listen sin størrelse 
-                String komplimentResult = bestevennListe.get(randomeNumber);
+            String komplimentResult = bestevennListe.get(randomeNumber);
                 // her finner vi da ett kompliment i listen 
-                return komplimentResult;         
-            }*/
-        //}
+            return komplimentResult;         
+            }
+        }
 
         
-        //return "mammaen din";
-    }
+    //return "mammaen din";
+    //}
 
     // -- Utregning math --
     private String math(){
