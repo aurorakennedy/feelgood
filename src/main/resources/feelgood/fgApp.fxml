@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="feelgood.FeelGoodController">
    <children>
-      <Pane fx:id="questionPane" layoutX="17.0" layoutY="325.0" prefHeight="364.0" prefWidth="625.0" style="-fx-background-color: #ddecfc; -fx-border-color: #9ac5f7; -fx-border-width: 2;">
+      <Pane fx:id="questionPane" layoutX="17.0" layoutY="325.0" prefHeight="382.0" prefWidth="625.0" style="-fx-background-color: #ddecfc; -fx-border-color: #9ac5f7; -fx-border-width: 2;">
          <children>
             <Label layoutX="14.0" layoutY="25.0" prefHeight="23.0" prefWidth="361.0" text="Hvor mange glass vann har du drukket i dag?">
                <font>
@@ -42,6 +42,7 @@
                   <Font name="Kannada Sangam MN" size="17.0" />
                </font>
             </Button>
+            <Text fx:id="lagreKommentar" layoutX="29.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="547.1476034782892" />
          </children>
       </Pane>
       <Pane prefHeight="83.0" prefWidth="378.0">
