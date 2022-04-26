@@ -118,7 +118,7 @@ public class Summary {
     //toString til "Se oppsummering"-knappen
     public String motivationalMessage(String brukernavn) {
         String[] sleep = this.sleep().split(",");
-        return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + "liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
+        return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + " liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og ca " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
     }
 
     //toString som skriver dager til fil
