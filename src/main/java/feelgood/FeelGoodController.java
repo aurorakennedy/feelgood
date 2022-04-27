@@ -19,7 +19,7 @@ public class FeelGoodController {
     @FXML
     public TextField glassVann, komplement, timerSovn, verdigNavn, matteSum, brukernavn; //importerer FXML-TextField-feltene
     @FXML
-    private Text feedback, mathEquation, innloggingsKommentar; //importerer FXML-Text-feltene
+    private Text feedback, mathEquation, innloggingsKommentar, lagreKommentar; //importerer FXML-Text-feltene
     @FXML
     private Button lagreButton, oppsummeringButton, tidligereButton; //importerer FXML-button-feltene
 
@@ -98,7 +98,6 @@ public class FeelGoodController {
     //lager et Day-objekt som lagres i fil når man trykker på "lagre svar"-knappen
     @FXML
     private void lagreSvar() throws IOException { 
-        System.out.println("lagreSvar() kjører"); //til oss (fjernes)
         Summary summary = filedealer.readFile(this.bruker.getName()); //henter Summary-objekt fra fileDealer - blir enten et objekt eller null (hvis fil ikke eksisterer)
         Day newDay = null; //setter newDay til null
 
@@ -106,6 +105,7 @@ public class FeelGoodController {
             newDay = new Day(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Integer.parseInt(matteSum.getText()), this.mathAnswer);
             //clearer svarfeltene
             glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear(); // ***er det mulig å ikke cleare hvis feilmelding??
+            lagreKommentar.setText("Svaret er lagret. Du kan nå registrere en dag til, se oppsummering eller se tidligere føringer."); //kommenterer under knappen
             matteStykke(); // generer nytt mattestykke
         } catch(IllegalArgumentException e){ //feilmeldinger fra validering blir printet i ALERT-box hvis utløst
             alert(e);
@@ -126,9 +126,6 @@ public class FeelGoodController {
     @FXML
     private void oppsummering(){ 
         Summary summary = this.bruker.getSummary(); // henter den oppdaterte summary-en
-        System.out.println("oppsummering kjører"); //til terminal (fjernes)
-        System.out.println(summary.calculations()); //til terminal (fjernes)
-        System.out.println(summary.motivationalMessage(this.bruker.getName())); //til terminal (fjernes)
         feedback.setText(summary.motivationalMessage(this.bruker.getName())); //melding til app 
     }
 

@@ -60,7 +60,6 @@ public String getAppreciation() {
 public int getMath() {
     return math;
 }
-
 public boolean getCorrectAnswer() {
     return correctAnswer;
 }

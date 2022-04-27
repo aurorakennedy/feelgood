@@ -28,7 +28,6 @@ public class FileDealer implements FileReadWrite {
                 //gjør om linja til et Day-objekt:
                 Day day = new Day(Double.parseDouble(linjeSplitta[0]), linjeSplitta[1] ,Double.parseDouble(linjeSplitta[2]), linjeSplitta[3], Integer.parseInt(linjeSplitta[4]), Integer.parseInt(linjeSplitta[5])); 
                 userSummary.add(day); //legger til Day-objektet i userSummary
-                System.out.println(day); //til terminal slik at vi kan se de enkelte Day-objektene  (fjernes)          
             }
         }     
         return userSummary; //brukernavn sitt Summary-objekt

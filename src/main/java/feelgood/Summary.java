@@ -17,22 +17,9 @@ public class Summary {
     public ArrayList<Day> getDays() {
         return this.days;
     }
-
-
-    // -- Legger resulatene av utregningene nedenfor inn i results-listen og returnerer denne -- 
-     public ArrayList<String> calculations(){ 
-        ArrayList<String> results = new ArrayList<>(); // har listen inni metoden, slik at den lages på nytt hver gang -da slipper vi å cleare den
-        results.add(""+sumWater()); 
-        results.add(longestCompliment());
-        results.add(sleep());
-        results.add(appreciation()); 
-        results.add(math());
-        System.out.println("results:" + results); //til terminal (fjernes)
-        return results;
-    }
         
 
-    // -- Utregning av vann -- 
+    // -- Utregning av vann --   regner ut totalen og gjør om fra glass til liter
     public double sumWater(){
         double glassesOfWater = 0; //setter totalt antall glass til 0
         for (Day day : days){  //for alle dagene i days-listen
@@ -42,7 +29,7 @@ public class Summary {
         return Math.round(litersOfWater * 100.0) / 100.0; //runder av resultatet
     }
 
-    // -- Utregning compliments --
+    // -- Utregning compliments --    finner det lengste komplementet
     public String longestCompliment(){
         String longest = ""; //setter tom variabel som skal være det lengste komplementet
         for (Day day : days){ //for alle dagene i days
@@ -55,7 +42,7 @@ public class Summary {
     }
 
     //***burde denne egt returneres som en double? 
-    // -- Utregning sleep --
+    // -- Utregning sleep --   regner ut totalt antall timer og gjør om til døgn + timer
     public String sleep(){
         double hoursSleep = 0; //totalt antall timer
         for (Day day : days){  //for alle dagene i days
@@ -65,9 +52,8 @@ public class Summary {
         double modulo = Math.round(hoursSleep%24); //regner ut resten av timer etter antall dager er satt
         return(""+daysSleep+ "," +modulo); //returnerer i ønsket format
     }
-    
         
-    // -- Utregning appreciation -- 
+    // -- Utregning appreciation --    finner det mest repeterte navnet, eller tilfeldig hvis det ikke finnes repeterende navn
     public String appreciation(){
         ArrayList<String> bestevennListe = new ArrayList<>(); //lager liste
         Set<String> bestevennSet = new HashSet<String> (); //lager sett
@@ -102,9 +88,8 @@ public class Summary {
         }
     }
 
-
-    // -- Utregning math --
-    public String math(){ //regner ut antall totale riktige svar på mattespørsmålet
+    // -- Utregning math --    regner ut antall totale riktige svar på mattespørsmålet
+    public String math(){ 
         int antallRiktige=0; //setter variabelen til 0
         for (Day day : days){ //for alle dager i days-lista
             if(day.getCorrectAnswer()){ //hvis getCorrectAnswer() verdien i hver dag er true
@@ -115,10 +100,22 @@ public class Summary {
     }
 
 
+
+
     //toString til "Se oppsummering"-knappen
     public String motivationalMessage(String brukernavn) {
         String[] sleep = this.sleep().split(",");
-        return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + calculations().get(0) + " liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + calculations().get(1) + ".\n\nTotalt har du har sovet i " + sleep[0] + " dag(er) og ca " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + calculations().get(3) + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + calculations().get(4) + " riktig(e).";
+        return "Bra gjennomført, " + brukernavn + "!\n\nDu var flink, du drakk " + sumWater() + " liter vann.\n\nDu har også vært generøs, noen ble nok glade for å høre at de var " + longestCompliment() + ".\n\nTotalt har du har sovet i " + sleep[0] + " døgn og ca " + sleep[1] + " time(r).\n\nHusk at det er mange som bryr seg om deg, spesielt " + appreciation() + ".\n\nOg sist men ikke minst, så er du god i matte! Du fikk " + math() + " riktig(e).";
+    }
+
+    //toString til "Se tidligere"-knappen
+    public String tidligereString() {
+        StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
+        for( Day day : this.days) { //for dager in days
+            //formaterer setningen som skal returneres og legges til StringBuilder-variabelen
+            tidligereDager.append("Vannmengde: " + day.getWater()+ "glass     Komplement(er): " + day.getCompliments() + "     Timer søvn: " + day.getSleep() + "\nHvem du har satt pris på: " + day.getAppreciation() + "     Ditt svar på mattestykket: " + day.getMath() +"\n\n");
+        }
+        return tidligereDager.toString(); //returnerer StringBuilder-variabelen
     }
 
     //toString som skriver dager til fil
@@ -130,17 +127,6 @@ public class Summary {
             stringTilFil.append("\n");  //lager linjeskift mellom dagene
         }
         return stringTilFil.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
-    }
-
-    //toString til "se tidligere"-knappen
-    public String tidligereString() {
-        StringBuilder tidligereDager = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
-        for( Day day : this.days) { //for dager in days
-            String [] enkelt = String.valueOf(day).split(", "); //lager en streng av hvert enkelt Day-objekt og splitter dette
-            //formaterer setningen som skal returneres og legges til StringBuilder-variabelen
-            tidligereDager.append("Vannmengde: " + enkelt[0] + "glass     Komplement(er): " + enkelt[1] + "     Timer søvn: " + enkelt[2] + "\nHvem du har satt pris på: " + enkelt[3] + "     Ditt svar på mattestykket: " + enkelt[4] +"\n\n");
-        }
-        return tidligereDager.toString(); //returnerer StringBuilder-variabelen
     }
 
 }
