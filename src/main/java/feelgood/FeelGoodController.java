@@ -102,7 +102,7 @@ public class FeelGoodController {
         Day newDay = null; //setter newDay til null
 
         try { //prøver å lage nytt Day-objekt med tekstfeltene fra FXML-filen
-            newDay = new Day(Double.parseDouble(glassVann.getText()), komplement.getText(), Double.parseDouble(timerSovn.getText()), verdigNavn.getText(), Integer.parseInt(matteSum.getText()), this.mathAnswer);
+            newDay = new Day(Double.parseDouble(glassVann.getText().replace(',', '.')), komplement.getText(), Double.parseDouble(timerSovn.getText().replace(',', '.')), verdigNavn.getText().replace(",", " og "), Integer.parseInt(matteSum.getText()), this.mathAnswer);
             //clearer svarfeltene
             glassVann.clear(); komplement.clear(); timerSovn.clear(); verdigNavn.clear(); matteSum.clear(); // ***er det mulig å ikke cleare hvis feilmelding??
             lagreKommentar.setText("Svaret er lagret. Du kan nå registrere en dag til, se oppsummering eller se tidligere føringer."); //kommenterer under knappen

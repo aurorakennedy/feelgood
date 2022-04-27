@@ -85,7 +85,7 @@
       </Pane>
       <Pane layoutX="16.0" layoutY="92.0" prefHeight="220.0" prefWidth="623.0" style="-fx-background-color: #feedf3; -fx-border-color: #fbcbdc; -fx-border-width: 2;">
          <children>
-            <Text fx:id="feedback1" layoutX="15.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vekommen til FeedGood- appen!" wrappingWidth="520.8767068674198">
+            <Text fx:id="feedback1" layoutX="15.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vekommen til FeelGood- appen!" wrappingWidth="520.8767068674198">
                <font>
                   <Font name="Kannada Sangam MN" size="17.0" />
                </font>

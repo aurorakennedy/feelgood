@@ -15,23 +15,23 @@ public class Day {
         // input validering med IllegalArgumentException
         if (water >= 0 && water <=50) {
             this.water = water;
-        } else{
+        } else{ 
             throw new IllegalArgumentException("Ikke realistisk mengde vann.");
         }
-        if (compliments.length()>2 && !compliments.contains(" ")) {
+        if (compliments.length()>2 && !compliments.contains(",")) {
             this.compliments=compliments;
         } else{
-            throw new IllegalArgumentException("Ikke gyldig komplement.");
+            throw new IllegalArgumentException("Ikke gyldig komplement. Kan ikke inneholde komma eller være kortere enn 2 bokstaver.");
         }
         if (sleep>=0 && sleep<24) {
             this.sleep= sleep;
         } else{
             throw new IllegalArgumentException("Det er ikke mulig å sove i mindre enn 0 timer eller mer enn 24 timer på et døgn.");
         }
-        if (appreciation.length()>1 && appreciation.length()<15) {
+        if (appreciation.length()>1) {
             this.appreciation = appreciation;
         } else{
-            throw new IllegalArgumentException("Ikke gyldig navn på person du har satt pris på.");
+            throw new IllegalArgumentException("Navnet på personen du har satt pris må bestå av minimum 2 bokstaver. ");
         }
         if (math>(actualAnswer-3) && math<(actualAnswer+3)) {
             this.math= math;

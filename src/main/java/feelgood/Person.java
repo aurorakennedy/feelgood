@@ -17,16 +17,16 @@ public class Person {
         this.summary = summary;
     }
 
-public String getName(){
-    return this.name; 
-}
+    public String getName(){
+        return this.name; 
+    }
 
-public Summary getSummary(){
-    return this.summary;
-}
+    public Summary getSummary(){
+        return this.summary;
+    }
 
-//setter personens summary som oppdatert summary ()
-public void setSummary(Summary newSummary){
-    this.summary=newSummary;
-}
+    //setter personens summary som oppdatert summary ()
+    public void setSummary(Summary newSummary){
+        this.summary=newSummary;
+    }
 }

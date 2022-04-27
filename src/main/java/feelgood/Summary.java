@@ -41,6 +41,7 @@ public class Summary {
         return longest; //returnerer det lengste komplementet
     }
 
+
     //***burde denne egt returneres som en double? 
     // -- Utregning sleep --   regner ut totalt antall timer og gjør om til døgn + timer
     public String sleep(){
