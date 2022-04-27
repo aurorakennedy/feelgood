@@ -1,0 +1,3 @@
+5.0, søt, 8.0, Klara, 10, 10
+3.0, morsom, 7.0, Eirik, 20, 20
+2.0, Hyggelig, 9.0, Klara, 33, 33

@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
+import java.io.FileNotFoundException;
+
 
 public class FeelGoodController {
 
@@ -37,7 +39,7 @@ public class FeelGoodController {
     }
 
     //metode som lager Alert-box med IllegalArgumentException som feilmelding
-    public void alert(IllegalArgumentException e){
+    public void alert(Exception e){
         Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
         feilmelding.setHeaderText(e.getMessage()); //setter header-teksten i Alert-boksen til å være IllegalArgumentExceptionen som ble utløst
         feilmelding.show(); //viser Alert-boksen
@@ -75,7 +77,7 @@ public class FeelGoodController {
             //gjør svarfeltene tilgjengelige
             glassVann.setDisable(false); komplement.setDisable(false); timerSovn.setDisable(false); verdigNavn.setDisable(false); matteSum.setDisable(false);
         }
-        catch (IllegalArgumentException e){ //hvis det ikke gikk an å gjøre alt i try
+        catch (IllegalArgumentException | FileNotFoundException e){ //hvis det ikke gikk an å gjøre alt i try
             alert(e);
         }
     }
@@ -132,9 +134,15 @@ public class FeelGoodController {
     //viser alle day-objektene i Summary når man trykker på "se tidligere"-knapp
     @FXML
     void seTidligere() {
-        System.out.println(filedealer.readFile(bruker.getName()));
+        //System.out.println(filedealer.readFile(bruker.getName()));
         //getTidligereDag();
-        Summary summary = filedealer.readFile(bruker.getName()); //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
+        Summary summary = null;
+        try {
+            summary = filedealer.readFile(bruker.getName());
+        } catch (FileNotFoundException e) {
+            
+            alert(e);
+        } //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
         if (summary != null) { //hvis filen ekisterer
             feedback.setText(summary.tidligereString()); //printes feedback i appen
         }

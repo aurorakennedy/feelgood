@@ -10,14 +10,14 @@ public class FileDealer implements FileReadWrite {
 
     //leser fil, returnerer brukernavnet sitt Summary-objekt
     @Override
-    public Summary readFile(String brukernavn) {
+    public Summary readFile(String brukernavn) throws FileNotFoundException {
         Scanner scanner = null;
         Summary userSummary = null;
         
         try { //finner eksisterende fil 
             scanner = new Scanner(new File("src/main/resources/saves/" + brukernavn +".txt")); 
         } catch (FileNotFoundException e) { //utløser feilmelding hvis fil ikke eksisterer, programmet fortsetter
-            System.err.println(brukernavn + " finnes ikke fra før av. Koden kjører videre.");
+            throw new FileNotFoundException("Fant ikke fil for bruker " + brukernavn);
         }
             
         if (scanner != null) { //sjekker at fil er funnet, ellers hadde scanner vært null
