@@ -24,16 +24,17 @@ public class SummaryTest {
 
     @Test //Sjekker at alle utregningene blir riktig 
     void testCalculations() {
+
         // --- Tester Vann ---
-        Assertions.assertEquals(2, summary.sumWater());
+        Assertions.assertEquals(2, summary.getWater());
         // --- Tester Kompliment ---
-        Assertions.assertEquals("Hyggelig", summary.longestCompliment());
+        Assertions.assertEquals("Hyggelig", summary.getCompliment());
         // --- Test Søvn ---
-        Assertions.assertEquals(""+1.0+ ","+0.0, summary.sleep()); // *** Sjekk med flere verdier usikker på hvordan det funker med rest 
+        Assertions.assertEquals(""+1.0+ ","+0.0, summary.getSleep()); // *** Sjekk med flere verdier usikker på hvordan det funker med rest 
         // --- Test Appreciation ---
-        Assertions.assertEquals("klara", summary.appreciation());
+        Assertions.assertEquals("klara", summary.getAppreciation());
         // --- Tester Antall Riktig Matte ---
-        Assertions.assertEquals(3 + "", summary.math());
+        Assertions.assertEquals(3 + "", summary.getMath());
         
     }
 

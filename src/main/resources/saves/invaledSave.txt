@@ -1,0 +1,2 @@
+7.0, kul, 8.0, Ola, 36, 36
+8.0, kul, snill, morsom, fredrik, 55, 55 
