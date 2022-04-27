@@ -24,31 +24,51 @@ public class DayTest {
         Assertions.assertTrue(day.getCorrectAnswer()); //Tror det er sånn vi sjekker actualAnswer, siden den skal være true hvis den er lik math
 
         //Sjekker at alle feilmeldingen blir utløst hvis det er feil i day objektet
-        // Vann ---> Sjekker at mengde vann ikke kan være negativt
+        // --- Vann ---
+        //Sjekker at mengde vann ikke kan være negativt
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(-2, "søt", 8, "frida", 21, 21); 
 		});
-        // Vann ---> Sjekker at mengde vann ikke kan være mer enn 50
+        //Sjekker at mengde vann ikke kan være mer enn 50
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(67, "søt", 8, "frida", 21, 21); 
 		});
 
-        // Komplement ---> Sjekker at komlimant ikke kan være kortere enn tre bokstaver
+
+        // --- Komplement ---
+        // Sjekker at komlimant ikke kan være kortere enn tre bokstaver
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "sa", 8, "frida", 21, 21); 
 		});
+         // Sjekker at komlimant ikke kan inneholde mellomrom
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Day(4, "martine har fine krøller", 8, "frida", 21, 21); 
+		});
 
-        // Søvn ---> Sjekker at man ikke har kan sove i mer enn 24 timer 
+
+        // --- Søvn ---
+        // Sjekker at man ikke har kan sove i mer enn 24 timer 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 30, "frida", 21, 21); 
 		});
+        // Sjekker at man ikke har kan sove mindre enn 0 
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Day(4, "søt", -5, "frida", 21, 21); 
+		});
 
-        // Appreciation ---> Sjekker at navnet ikke er lenger enn 15 bokstaver
+
+        // --- Appreciation ---
+        // Sjekker at navnet ikke er lenger enn 15 bokstaver
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 8, "fridafridafridafrida", 21, 21); 
 		});
+        // Sjekker at navnet er større enn 1 bokstaver
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Day(4, "søt", 8, "f", 21, 21); 
+		});
 
-        //Matte ---> Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
+        // --- Matte --- 
+        // Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 8, "frida", 55, 21); 
 		});
