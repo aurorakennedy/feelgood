@@ -17,7 +17,7 @@ public class FileDealer implements FileReadWrite {
         try { //finner eksisterende fil 
             scanner = new Scanner(new File("src/main/resources/saves/" + brukernavn +".txt")); 
         } catch (FileNotFoundException e) { //utløser feilmelding hvis fil ikke eksisterer, programmet fortsetter
-            throw new FileNotFoundException("Fant ikke fil for bruker " + brukernavn);
+            throw new FileNotFoundException("Kunne ikke lese data fra bruker: " + brukernavn);
         }
             
         if (scanner != null) { //sjekker at fil er funnet, ellers hadde scanner vært null

@@ -3,11 +3,9 @@ package feelgood;
 import java.io.IOException;
 import java.util.Random;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
@@ -27,7 +25,7 @@ public class FeelGoodController {
     @FXML
     private Button lagreButton, oppsummeringButton, tidligereButton; //importerer FXML-button-feltene
     @FXML
-    private Button waterSortButton, complimentsSortButton, sleepSortButton, appreciationSortButton;
+    private Button waterSortButton, complimentsSortButton;
     
     //metode som kjøres i det appen starter
     public void initialize(){
@@ -40,7 +38,8 @@ public class FeelGoodController {
         //inaktiverer svarfeltene
         glassVann.setDisable(true); komplement.setDisable(true); timerSovn.setDisable(true); verdigNavn.setDisable(true); matteSum.setDisable(true);
 
-        waterSortButton.setVisible(false); 
+        //skjuler sorteringsknappene
+        waterSortButton.setVisible(false); complimentsSortButton.setVisible(false); 
     
     }
 
@@ -105,8 +104,7 @@ public class FeelGoodController {
         //inaktiverer knappene og svarfeltene
         lagreButton.setDisable(true); oppsummeringButton.setDisable(true); tidligereButton.setDisable(true);
         glassVann.setDisable(true); komplement.setDisable(true); timerSovn.setDisable(true); verdigNavn.setDisable(true); matteSum.setDisable(true);
-        waterSortButton.setVisible(false);
-
+        waterSortButton.setVisible(false); complimentsSortButton.setVisible(false);
     }
 
     //lager et Day-objekt som lagres i fil når man trykker på "lagre svar"-knappen
@@ -136,7 +134,7 @@ public class FeelGoodController {
     private void oppsummering(){ 
         Summary summary = this.bruker.getSummary(); // henter den oppdaterte summary-en
         feedback.setText(summary.motivationalMessage(this.bruker.getName())); //melding til app 
-        waterSortButton.setVisible(false);
+        waterSortButton.setVisible(false); complimentsSortButton.setVisible(false);
 
     }
 
@@ -155,7 +153,8 @@ public class FeelGoodController {
         if (summary != null) { //hvis filen ekisterer
             feedback.setText(summary.tidligereString()); //printes feedback i appen
         }
-        waterSortButton.setVisible(true);
+        waterSortButton.setVisible(true); complimentsSortButton.setVisible(true); 
+
     }
 
 

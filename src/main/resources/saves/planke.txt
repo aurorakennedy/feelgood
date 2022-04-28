@@ -5,3 +5,4 @@
 10.0, heftigste på jord, 10.0, klara, 25, 25
 5.0, aaa, 5.0, olle, 8, 8
 6.6, egerg, 8.0, jhjhjh, 27, 27
+5.0, kul, 7.0, janne, 11, 11
