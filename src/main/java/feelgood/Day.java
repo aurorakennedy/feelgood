@@ -69,4 +69,59 @@ public class Day {
     public String toString(){
         return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
     }
+
+
+    
+    /** Man vil ha det hvis man kjører en .equals metode, spesielt i fil? */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + actualAnswer;
+        result = prime * result + ((appreciation == null) ? 0 : appreciation.hashCode());
+        result = prime * result + ((compliments == null) ? 0 : compliments.hashCode());
+        result = prime * result + (correctAnswer ? 1231 : 1237);
+        result = prime * result + math;
+        long temp;
+        temp = Double.doubleToLongBits(sleep);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(water);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Day other = (Day) obj;
+        if (actualAnswer != other.actualAnswer)
+            return false;
+        if (appreciation == null) {
+            if (other.appreciation != null)
+                return false;
+        } else if (!appreciation.equals(other.appreciation))
+            return false;
+        if (compliments == null) {
+            if (other.compliments != null)
+                return false;
+        } else if (!compliments.equals(other.compliments))
+            return false;
+        if (correctAnswer != other.correctAnswer)
+            return false;
+        if (math != other.math)
+            return false;
+        if (Double.doubleToLongBits(sleep) != Double.doubleToLongBits(other.sleep))
+            return false;
+        if (Double.doubleToLongBits(water) != Double.doubleToLongBits(other.water))
+            return false;
+        return true;
+    }
+    
 }
+

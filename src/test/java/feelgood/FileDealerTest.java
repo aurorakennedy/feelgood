@@ -32,7 +32,6 @@ public class FileDealerTest {
 
     @Test
 	public void testSave() {
-        // Er fil lagd? 
 		try {
 			fileDealer.writeFile(person.getName(), summary); // Prøver å skriver til fil 
 		} catch (IOException e) {
@@ -49,6 +48,7 @@ public class FileDealerTest {
 		}
 
 		assertNotNull(testFile); // Ikke null hvis den klarte å lese filen 
+		assertEquals(person.getSummary(), testFile);
 	}
 
     @Test
@@ -63,7 +63,7 @@ public class FileDealerTest {
 		
 	}
 
-    /* Skal vi klare å teste dette usikker*/
+    
     @Test
 	public void testLoadNonExistingFile() {
 		assertThrows(
