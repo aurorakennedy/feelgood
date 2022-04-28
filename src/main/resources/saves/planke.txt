@@ -5,8 +5,4 @@
 10.0, heftigste på jord, 10.0, klara, 25, 25
 5.0, aaa, 5.0, olle, 8, 8
 6.6, egerg, 8.0, jhjhjh, 27, 27
-<<<<<<< HEAD
-7.0, søt, 9.0, eiril, 36, 36
-=======
 5.0, kul, 7.0, janne, 11, 11
->>>>>>> c3681f0e79ec6e5e666f922e693521588737a644
