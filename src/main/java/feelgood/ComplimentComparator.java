@@ -2,7 +2,7 @@ package feelgood;
 
 import java.util.Comparator;
 
-public class LetterComparator implements Comparator<Day> {
+public class ComplimentComparator implements Comparator<Day> {
     @Override 
     public int compare(Day day1, Day day2) {
         if (day1.getCompliments().length() > day2.getCompliments().length()) {

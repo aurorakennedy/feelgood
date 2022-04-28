@@ -162,20 +162,10 @@ public class FeelGoodController {
 //dette hører til Comparator forsøket mitt funksjonelt grensesnitt
     @FXML
     private void waterSort(){
-        feedback.setText(bruker.getSummary().sortDays(new NumberComparator()));
+        feedback.setText(bruker.getSummary().sortDays(new WaterComparator()));
     }
     @FXML
     private void complimentsSort(){
-        feedback.setText(bruker.getSummary().sortDays(new LetterComparator()));
+        feedback.setText(bruker.getSummary().sortDays(new ComplimentComparator()));
     }
-    /*
-    @FXML
-    private void sleepSort(){
-        feedback.setText(bruker.getSummary().tidligereFøringer(new NumberComparator()));
-    }
-    @FXML
-    private void appreciationSort(){
-        feedback.setText(bruker.getSummary().tidligereFøringer(new LetterComparator()));
-    }*/
-
 }

@@ -135,6 +135,4 @@ public class Summary {
         Collections.sort(days, dayComparator); //sorterer days
         return tidligereString(); //kjører tidligereString med den nye days-verdien
     }
-
-    
 }
