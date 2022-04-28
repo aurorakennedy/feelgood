@@ -1,2 +1,0 @@
-5.3, dfvdv , 5.0, refegr , 11, 11
-5.4, kul caps, 6.5, rebekka, rikke, 14, 14

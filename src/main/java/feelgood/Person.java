@@ -25,7 +25,7 @@ public class Person {
         return this.summary;
     }
 
-    /*
+    /* tror ikke vi trenger denne lenger
     //setter personens summary som oppdatert summary ()
     public void setSummary(Summary newSummary){
         this.summary=newSummary;

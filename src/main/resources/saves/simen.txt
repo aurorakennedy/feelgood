@@ -1,6 +1,0 @@
-1.0, Flink, 7.0, Marte, 6, 6
-2.0, swag, 8.0, Håkon, 23, 23
-5.0, erger, 5.0, erger, 8, 8
-8.0, hgjhj, 7.0, jkhkhkh, 25, 25
-5.0, rege, 4.0, ergreg, 18, 18
-10.0, snill, 23.0, ola, 25, 25

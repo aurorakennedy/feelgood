@@ -21,19 +21,18 @@ public class Summary {
     }
 
 
-
     // -- Utregning av vann --   regner ut totalen og gjør om fra glass til liter
-    private double sumWater(){
+    public String sumWater(){
         double glassesOfWater = 0; //setter totalt antall glass til 0
         for (Day day : days){  //for alle dagene i days-listen
             glassesOfWater += day.getWater(); //henter antall glass for enkelt dag og legger til i totalt antall glass
         }
         double litersOfWater = glassesOfWater*0.2; //regner om fra glass til liter
-        return Math.round(litersOfWater * 100.0) / 100.0; //runder av resultatet
+        return ("" + Math.round(litersOfWater * 100.0) / 100.0); //runder av resultatet
     }
 
     // -- Utregning compliments --    finner det lengste komplementet
-    private String longestCompliment(){
+    public String longestCompliment(){
         String longest = ""; //setter tom variabel som skal være det lengste komplementet
         for (Day day : days){ //for alle dagene i days
             String komplement = day.getCompliments(); //setter komplementet i dagen i egen variabel
@@ -47,7 +46,7 @@ public class Summary {
 
     //***burde denne egt returneres som en double? 
     // -- Utregning sleep --   regner ut totalt antall timer og gjør om til døgn + timer
-    private String sleep(){
+    public String sleep(){
         double hoursSleep = 0; //totalt antall timer
         for (Day day : days){  //for alle dagene i days
             hoursSleep += day.getSleep(); //legger til antall timer hver dag til totalt antall timer
@@ -58,7 +57,7 @@ public class Summary {
     }
         
     // -- Utregning appreciation --    finner det mest repeterte navnet, eller tilfeldig hvis det ikke finnes repeterende navn
-    private String appreciation(){
+    public String appreciation(){
         ArrayList<String> bestevennListe = new ArrayList<>(); //lager liste
         Set<String> bestevennSet = new HashSet<String> (); //lager sett
         for (Day day : days){
@@ -93,7 +92,7 @@ public class Summary {
     }
 
     // -- Utregning math --    regner ut antall totale riktige svar på mattespørsmålet
-    private String math(){ 
+    public String math(){ 
         int antallRiktige=0; //setter variabelen til 0
         for (Day day : days){ //for alle dager i days-lista
             if(day.getCorrectAnswer()){ //hvis getCorrectAnswer() verdien i hver dag er true
@@ -103,28 +102,6 @@ public class Summary {
         return antallRiktige + ""; //returnerer antall riktige som en streng
     }
 
-
-    // --- Gettere så vi kan hente verdiene etter utregning til testere, uten å måtte gjøre funskjonene public 
-    public Double getWater(){
-        //Double literVann = sumWater();
-        return sumWater(); 
-    }
-
-    public String getCompliment(){
-        return longestCompliment(); 
-    }
-
-    public String getSleep(){
-        return sleep(); 
-    }
-
-    public String getAppreciation(){
-        return appreciation(); 
-    }
-
-    public String getMath(){
-        return math(); 
-    }
 
     //toString som skriver dager til fil
     @Override
