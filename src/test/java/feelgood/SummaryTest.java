@@ -23,18 +23,18 @@ public class SummaryTest {
 
 
     @Test //Sjekker at alle utregningene blir riktig 
-    void testCalculations() {
+    public void testCalculations() {
 
         // --- Tester Vann ---
-        Assertions.assertEquals(2, summary.getWater());
+        Assertions.assertEquals(2.0 +"", summary.sumWater());
         // --- Tester Kompliment ---
-        Assertions.assertEquals("Hyggelig", summary.getCompliment());
+        Assertions.assertEquals("Hyggelig", summary.longestCompliment());
         // --- Test Søvn ---
-        Assertions.assertEquals(""+1.0+ ","+0.0, summary.getSleep()); // *** Sjekk med flere verdier usikker på hvordan det funker med rest 
+        Assertions.assertEquals(""+1.0+ ","+0.0, summary.sleep()); // *** Sjekk med flere verdier usikker på hvordan det funker med rest 
         // --- Test Appreciation ---
-        Assertions.assertEquals("klara", summary.getAppreciation());
+        Assertions.assertEquals("klara", summary.appreciation());
         // --- Tester Antall Riktig Matte ---
-        Assertions.assertEquals(3 + "", summary.getMath());
+        Assertions.assertEquals(3 + "", summary.math());
         
     }
 

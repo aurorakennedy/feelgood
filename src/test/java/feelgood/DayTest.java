@@ -40,6 +40,10 @@ public class DayTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "sa", 8, "frida", 21, 21); 
 		});
+        // Sjekker at komlimant ikke kan inneholde ", "
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Day(4, "søt, snill", 8, "frida", 21, 21); 
+		});
 
 
         // --- Søvn ---
@@ -54,10 +58,6 @@ public class DayTest {
 
 
         // --- Appreciation ---
-        // Sjekker at navnet ikke er lenger enn 15 bokstaver
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Day(4, "søt", 8, "fridafridafridafrida", 21, 21); 
-		});
         // Sjekker at navnet er større enn 1 bokstaver
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 8, "f", 21, 21); 
@@ -67,6 +67,10 @@ public class DayTest {
         // Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 8, "frida", 55, 21); 
+		});
+        // Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Day(4, "søt", 8, "frida", 17, 21); 
 		});
 
 

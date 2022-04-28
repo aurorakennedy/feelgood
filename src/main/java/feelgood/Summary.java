@@ -135,4 +135,38 @@ public class Summary {
         Collections.sort(days, dayComparator); //sorterer days
         return tidligereString(); //kjører tidligereString med den nye days-verdien
     }
+
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((days == null) ? 0 : days.hashCode());
+        result = prime * result + ((fileDealer == null) ? 0 : fileDealer.hashCode());
+        return result;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Summary other = (Summary) obj;
+        if (days == null) {
+            if (other.days != null)
+                return false;
+        } else if (!days.equals(other.days))
+            return false;
+        if (fileDealer == null) {
+            if (other.fileDealer != null)
+                return false;
+        } else if (!fileDealer.equals(other.fileDealer))
+            return false;
+        return true;
+    }
+
+
+    
 }
