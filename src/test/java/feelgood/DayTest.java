@@ -40,10 +40,6 @@ public class DayTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "sa", 8, "frida", 21, 21); 
 		});
-         // Sjekker at komlimant ikke kan inneholde mellomrom
-		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Day(4, "martine har fine krøller", 8, "frida", 21, 21); 
-		});
 
 
         // --- Søvn ---

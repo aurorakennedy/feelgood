@@ -1,0 +1,4 @@
+8.0, kul, 8.0, ola, 20, 20
+7.0, morsom, 7.0, ole, 12, 12
+9.0, interessant, 9.0, oli, 13, 13
+10.0, heftigste på jord, 10.0, klara, 25, 25

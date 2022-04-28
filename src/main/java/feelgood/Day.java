@@ -43,30 +43,30 @@ public class Day {
     }
 
 
-// -- Gettere -- 
+    // -- Gettere -- 
 
-public double getWater(){
-    return water;
-}
-public String getCompliments() {
-    return compliments;
-}
-public double getSleep() {
-    return sleep;
-}
-public String getAppreciation() {
-    return appreciation.toLowerCase(); // Gjør alle bokstavene til små i verdsatte navn 
-}
-public int getMath() {
-    return math;
-}
-public boolean getCorrectAnswer() {
-    return correctAnswer;
-}
+    public double getWater(){
+        return water;
+    }
+    public String getCompliments() {
+        return compliments;
+    }
+    public double getSleep() {
+        return sleep;
+    }
+    public String getAppreciation() {
+        return appreciation.toLowerCase(); // Gjør alle bokstavene til små i verdsatte navn 
+    }
+    public int getMath() {
+        return math;
+    }
+    public boolean getCorrectAnswer() {
+        return correctAnswer;
+    }
 
-//toString som brukes når Day-objekter skrives til fil
-@Override
-public String toString(){
-    return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
-}
+    //toString som brukes når Day-objekter skrives til fil
+    @Override
+    public String toString(){
+        return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
+    }
 }

@@ -25,8 +25,9 @@ public class Person {
         return this.summary;
     }
 
+    /*
     //setter personens summary som oppdatert summary ()
     public void setSummary(Summary newSummary){
         this.summary=newSummary;
-    }
+    }*/
 }

@@ -1,6 +1,8 @@
 package feelgood;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -15,9 +17,10 @@ public class Summary {
     }
     //henter listen
     public ArrayList<Day> getDays() {
-        return new ArrayList<>(this.days);
+        return this.days;
     }
-        
+
+
 
     // -- Utregning av vann --   regner ut totalen og gjør om fra glass til liter
     private double sumWater(){
@@ -123,7 +126,16 @@ public class Summary {
         return math(); 
     }
 
-
+    //toString som skriver dager til fil
+    @Override
+    public String toString() {
+        StringBuilder stringTilFil = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
+        for( Day day : this.days) { //for dager in days
+            stringTilFil.append(day); //legger til dager i tidligereDager
+            stringTilFil.append("\n");  //lager linjeskift mellom dagene
+        }
+        return stringTilFil.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
+    }
 
     //toString til "Se oppsummering"-knappen
     public String motivationalMessage(String brukernavn) {
@@ -141,15 +153,11 @@ public class Summary {
         return tidligereDager.toString(); //returnerer StringBuilder-variabelen
     }
 
-    //toString som skriver dager til fil
-    @Override
-    public String toString() {
-        StringBuilder stringTilFil = new StringBuilder(); //StringBuilder er et slags String-objekt som kan endres mer fritt enn vanlig String
-        for( Day day : this.days) { //for dager in days
-            stringTilFil.append(day); //legger til dager i tidligereDager
-            stringTilFil.append("\n");  //lager linjeskift mellom dagene
-        }
-        return stringTilFil.toString(); //returnerer spalten som kommer opp når man trykker på "se tidligere"
+    //sorterer listen utifra hvilken comparator som tas inn i controlleren
+    public String sortDays(Comparator<Day> dayComparator) {
+        Collections.sort(days, dayComparator); //sorterer days
+        return tidligereString(); //kjører tidligereString med den nye days-verdien
     }
 
+    
 }
