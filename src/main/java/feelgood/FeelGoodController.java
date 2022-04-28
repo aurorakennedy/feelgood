@@ -3,11 +3,9 @@ package feelgood;
 import java.io.IOException;
 import java.util.Random;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
@@ -30,7 +28,7 @@ public class FeelGoodController {
     private Button waterSortButton, complimentsSortButton, sleepSortButton, appreciationSortButton;
     
     //metode som kjøres i det appen starter
-    public void initialize(){
+    public void initialize(){ // Vil være public fordi den aldri blir kalt på andre steder i koden 
 
         matteStykke(); // generer mattestykke og setter det i tekstfeltet
 
@@ -45,16 +43,16 @@ public class FeelGoodController {
     }
 
     //metode som lager Alert-box med IllegalArgumentException som feilmelding
-    public void alert(Exception e){
+    private void alert(Exception e){
         Alert feilmelding = new Alert(AlertType.ERROR); //lager ALERT-box
         feilmelding.setHeaderText(e.getMessage()); //setter header-teksten i Alert-boksen til å være IllegalArgumentExceptionen som ble utløst
         feilmelding.show(); //viser Alert-boksen
     }
 
-    // ***kan vi flytte logikken til en annen klasse? 
+    
     //metode som finner de tilfeldige tallene til mattestykket og setter svaret som summen av disse
     @FXML
-    public void matteStykke() { 
+    private void matteStykke() { 
         Random random = new Random(); //importerer random-biblioteket
         int tall1 = random.nextInt(20)+1; //tilfeldig tall mellom 1 og 20
         int tall2 = random.nextInt(20)+1;
@@ -65,7 +63,7 @@ public class FeelGoodController {
 
     
     //metode som lager setter Person-objekt med brukernavnet som er oppgitt, gråer ut/aktiverer felter når login-knappen trykkes
-    public void login(){
+    public void login(){ // Vil være public fordi den aldri blir kalt på andre steder i koden 
         String username = brukernavn.getText().toLowerCase(); //lagrer brukernavn-feltet i fxml som username-variabel
         Summary summary = null;
         try {
@@ -93,7 +91,7 @@ public class FeelGoodController {
     }
 
     //metode som clearer og inaktiverer felter når det logges ut
-    public void logout(){
+    public void logout(){ // Vil være public fordi den aldri blir kalt på andre steder i koden 
         brukernavn.clear(); //clearer brukernavn-feltet
         brukernavn.setDisable(false); //aktiverer brukernavn-feltet
         innloggingsKommentar.setText("Du er logget ut."); //kommenterer under feltet
@@ -143,8 +141,6 @@ public class FeelGoodController {
     //viser alle day-objektene i Summary når man trykker på "se tidligere"-knapp
     @FXML
     private void seTidligere() {
-        //System.out.println(filedealer.readFile(bruker.getName()));
-        //getTidligereDag();
         Summary summary = null;
         try {
             summary = filedealer.readFile(bruker.getName());
@@ -159,7 +155,7 @@ public class FeelGoodController {
     }
 
 
-//dette hører til Comparator forsøket mitt funksjonelt grensesnitt
+    //dette hører til Comparator forsøket mitt funksjonelt grensesnitt
     @FXML
     private void waterSort(){
         feedback.setText(bruker.getSummary().sortDays(new WaterComparator()));

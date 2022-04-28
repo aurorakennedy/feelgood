@@ -27,7 +27,7 @@ public class FileDealerTest {
         summary.add(day1);
         summary.add(day2);
         summary.add(day3);
-        //person.setSummary(summary);
+        
     }
 
     @Test
