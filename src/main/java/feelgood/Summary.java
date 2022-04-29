@@ -145,6 +145,7 @@ public class Summary {
         result = prime * result + ((fileDealer == null) ? 0 : fileDealer.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
