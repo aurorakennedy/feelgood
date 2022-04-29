@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Test;
 public class DayTest {
     
     private Day day; 
+    private Day day2; 
+
 
     @BeforeEach // Lager dagen som vi skal teste, testene våres på:
     private void creatDay(){
         day = new Day(4, "søt", 8, "Frida", 21, 21);
+        day2 = new Day(4, "søt", 8, "Frida", 20, 21);
     }
 
     @Test
@@ -22,8 +25,11 @@ public class DayTest {
         Assertions.assertEquals("frida", day.getAppreciation());
         Assertions.assertEquals(21, day.getMath());
         Assertions.assertTrue(day.getCorrectAnswer()); //Tror det er sånn vi sjekker actualAnswer, siden den skal være true hvis den er lik math
+        Assertions.assertFalse(day2.getCorrectAnswer()); // sjekker at den blir fals hvis man ikke har riktig men er under +-3 unna riktig svar
+
 
         //Sjekker at alle feilmeldingen blir utløst hvis det er feil i day objektet
+        
         // --- Vann ---
         //Sjekker at mengde vann ikke kan være negativt
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -64,15 +70,14 @@ public class DayTest {
 		});
 
         // --- Matte --- 
-        // Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
+        // Sjekker om svare er mer enn +-3 fra riktig svar får en sjanse til 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Day(4, "søt", 8, "frida", 55, 21); 
 		});
-        // Sjekker om svare er mer enn +-3 fra riktig svar, ikke blir riktig
+        // Sjekker om svare er mer enn +-3 fra riktig svar får en sjanse til 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Day(4, "søt", 8, "frida", 17, 21); 
+			new Day(4, "søt", 8, "frida", 18, 21); 
 		});
-
 
     }
 }

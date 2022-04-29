@@ -18,19 +18,18 @@ public class PersonTest {
         summary.add(day1);
         summary.add(day2);
         summary.add(day3);
-        //person.setSummary(summary);
     }
  
 
-    @BeforeEach // Lager dagen som vi skal teste, testene våres på:
+    @BeforeEach 
     private void creatPerson(){
-        person = new Person("klara", summary); // *** Studas: Kan jeg bare ta inn summary her som en variabel??
+        person = new Person("klara", summary); 
     }
 
     @Test
     public void testConstructor(){
-        Assertions.assertEquals("klara", person.getName());
-        Assertions.assertEquals(summary, person.getSummary()); // Er dette feil?! 
+        Assertions.assertEquals("klara", person.getName()); //sjekker at navne er riktig
+        Assertions.assertEquals(summary, person.getSummary()); // sjekker at det er riktig summary 
 
         //Sjekker at navnet ikke kan være lengere enn 15 bokstaver 
 	    Assertions.assertThrows(IllegalArgumentException.class, () -> {

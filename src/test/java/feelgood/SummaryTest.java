@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class SummaryTest {
 
-    //Summary summary;
     Summary summary = new Summary();
 
     @BeforeEach
@@ -30,7 +29,7 @@ public class SummaryTest {
         // --- Tester Kompliment ---
         Assertions.assertEquals("Hyggelig", summary.longestCompliment());
         // --- Test Søvn ---
-        Assertions.assertEquals(""+1.0+ ","+0.0, summary.sleep()); // *** Sjekk med flere verdier usikker på hvordan det funker med rest 
+        Assertions.assertEquals(""+1.0+ ","+0.0, summary.sleep()); 
         // --- Test Appreciation ---
         Assertions.assertEquals("klara", summary.appreciation());
         // --- Tester Antall Riktig Matte ---
