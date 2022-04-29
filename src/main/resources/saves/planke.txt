@@ -1,8 +1,0 @@
-8.0, kul, 8.0, ola, 20, 20
-4.0, rar, 4.0, mamma, 26, 26
-7.0, morsom, 7.0, ole, 12, 12
-9.0, interessant, 9.0, oli, 13, 13
-10.0, heftigste på jord, 10.0, klara, 25, 25
-5.0, aaa, 5.0, olle, 8, 8
-6.6, egerg, 8.0, jhjhjh, 27, 27
-5.0, kul, 7.0, janne, 11, 11

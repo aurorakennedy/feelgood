@@ -69,7 +69,7 @@ public class FileDealerTest {
 	public void testLoadNonExistingFile() { // sjekker at den ikke leser en ikke eksisterende fil 
 		assertThrows(
 				FileNotFoundException.class,
-				() -> summary = fileDealer.readFile("foo"),
+				() -> summary = fileDealer.readFile("foo"), //foo eksisterer ikke
 				"FileNotFoundException should be thrown when file does not exist!");
 	}
     
