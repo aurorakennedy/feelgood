@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 public class FeelGoodController {
 
     private FileDealer filedealer = new FileDealer(); //gjør at vi kan bruke FileDealer-klassen her
-    private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål i variabel
+    private int mathAnswer; //lagrer det riktige svaret til tilfeldig mattespørsmål som variabel
     private Person bruker; //gjør at vi kan bruke Person-klassen her
     
     @FXML
@@ -63,14 +63,14 @@ public class FeelGoodController {
     }
 
     
-    //metode som lager setter Person-objekt med brukernavnet som er oppgitt, gråer ut/aktiverer felter når login-knappen trykkes
+    //metode som lager ett Person-objekt med brukernavnet som er oppgitt, gråer ut/aktiverer felter når login-knappen trykkes
     public void login(){ // Vil være public fordi den aldri blir kalt på andre steder i koden 
         String username = brukernavn.getText().toLowerCase(); //lagrer brukernavn-feltet i fxml som username-variabel
         Summary summary = null;
         try {
             //vi leser et summary fra fil
              summary = filedealer.readFile(username); //lager Summary-objekt ved å lese filen til brukernavnet
-        } catch (FileNotFoundException e){ // oops, fant ikke noe summary på fil
+        } catch (FileNotFoundException e){ // feilmelding blir utløst hvis den ikke finner noe summary på fil
             summary = new Summary(); //lager nytt Summary-objekt
         }
 
@@ -86,7 +86,7 @@ public class FeelGoodController {
             //gjør svarfeltene tilgjengelige
             glassVann.setDisable(false); komplement.setDisable(false); timerSovn.setDisable(false); verdigNavn.setDisable(false); matteSum.setDisable(false);
         }
-        catch (IllegalArgumentException e){ //hvis det ikke gikk an å gjøre alt i try
+        catch (IllegalArgumentException e){ // Feilmelding hvis noe er galt med brukernavnet, siden summary altid eksisterer
             alert(e);
         }
     }
@@ -121,11 +121,10 @@ public class FeelGoodController {
         } catch(IllegalArgumentException e){ //feilmeldinger fra validering blir printet i ALERT-box hvis utløst
             alert(e);
         }
-
-        //lager ny fil for personer som ikke finnes fra før av (ved å kalle på writeFile())
+        //Legger til Day objekte til brukerens summary og skriver det til fil
         if (newDay != null) { //hvis den klarte å lage nytt Day-objekt 
-            bruker.getSummary().add(newDay); //har eksisterende Summary-fil og legger derfor til Day-objektet newDay i summary
-            filedealer.writeFile(bruker.getName(), bruker.getSummary()); //skriver newDay til fil
+            bruker.getSummary().add(newDay); //henter brukerens Summary-fil og legger til Day-objektet newDay i summary
+            filedealer.writeFile(bruker.getName(), bruker.getSummary()); //skriver (oppdatert summary) newDay til fil
         }
     }
 
@@ -147,7 +146,7 @@ public class FeelGoodController {
         } catch (FileNotFoundException e) {
             
             alert(e);
-        } //sjekker om fil finnes eller ikke ***skjønner ikke helt hva det betyr (summary)
+        } //sjekker om fil finnes eller ikke 
         if (summary != null) { //hvis filen ekisterer
             feedback.setText(summary.tidligereString()); //printes feedback i appen
         }
@@ -156,11 +155,12 @@ public class FeelGoodController {
     }
 
 
-    //dette hører til Comparator forsøket mitt funksjonelt grensesnitt
+    //Sorterer Day - objekter etter mengde vann og vises på skjerm 
     @FXML
     private void waterSort(){
         feedback.setText(bruker.getSummary().sortDays(new WaterComparator()));
     }
+    // Sorterer Day - objekter etter lengste kompliment og vises på skjermen 
     @FXML
     private void complimentsSort(){
         feedback.setText(bruker.getSummary().sortDays(new ComplimentComparator()));

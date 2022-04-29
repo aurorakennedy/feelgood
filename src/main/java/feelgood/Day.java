@@ -1,6 +1,5 @@
 package feelgood;
 
-//Day- 
 public class Day {
     private double water;
     private String compliments;
@@ -70,37 +69,19 @@ public class Day {
         return (water + ", " + compliments + ", " + sleep  + ", " + appreciation  + ", " + math + ", " + actualAnswer);
     }
 
-
-    
-    /** Man vil ha det hvis man kjører en .equals metode, spesielt i fil? */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + actualAnswer;
-        result = prime * result + ((appreciation == null) ? 0 : appreciation.hashCode());
-        result = prime * result + ((compliments == null) ? 0 : compliments.hashCode());
-        result = prime * result + (correctAnswer ? 1231 : 1237);
-        result = prime * result + math;
-        long temp;
-        temp = Double.doubleToLongBits(sleep);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(water);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-
+    // Equals metoden for FileDealer testen
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) // Sjekker at det er dette samme objekt, (aka, Day - objektet)
             return true;
-        if (obj == null)
+        if (obj == null) // Hvis objekte er null vet vi at det ikke er det samme, returnerer fals
             return false;
-        if (getClass() != obj.getClass())
+        if (getClass() != obj.getClass()) // Hvis klassen ikke er like vet vi at de ikke er like 
             return false;
-        Day other = (Day) obj;
-        if (actualAnswer != other.actualAnswer)
+        Day other = (Day) obj; // Kan trygt gjøre en cast, fordi vi sjekker over at de begge er i day klassen
+       
+        // Sammenligner alle feltene, blir returnert fals hvis noen av de ikke er like. 
+        if (actualAnswer != other.actualAnswer) 
             return false;
         if (appreciation == null) {
             if (other.appreciation != null)

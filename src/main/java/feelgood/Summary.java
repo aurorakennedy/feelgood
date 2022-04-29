@@ -44,7 +44,7 @@ public class Summary {
     }
 
 
-    //***burde denne egt returneres som en double? 
+    
     // -- Utregning sleep --   regner ut totalt antall timer og gjør om til døgn + timer
     public String sleep(){
         double hoursSleep = 0; //totalt antall timer
@@ -136,24 +136,18 @@ public class Summary {
         return tidligereString(); //kjører tidligereString med den nye days-verdien
     }
 
-    
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((days == null) ? 0 : days.hashCode());
-        result = prime * result + ((fileDealer == null) ? 0 : fileDealer.hashCode());
-        return result;
-    }
+
+    // summary 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) //Sjekker at objektene er like 
             return true;
-        if (obj == null)
+        if (obj == null) // Sjekker at objekte ikke er null 
             return false;
-        if (getClass() != obj.getClass())
+        if (getClass() != obj.getClass()) // Sjekker om de ikke er i samme klasse
             return false;
-        Summary other = (Summary) obj;
+        Summary other = (Summary) obj; //Vet at de er i samme klasse, så kan trygt lage en cast 
+        // Sjekker at hver dag er like, hvis ikke returneres det False. 
         if (days == null) {
             if (other.days != null)
                 return false;

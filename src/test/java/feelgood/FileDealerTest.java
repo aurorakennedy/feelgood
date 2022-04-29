@@ -32,7 +32,7 @@ public class FileDealerTest {
 
     @Test
 	public void testSave() {
-		try {
+		try { 
 			fileDealer.writeFile(person.getName(), summary); // Prøver å skriver til fil 
 		} catch (IOException e) {
 			fail("Could not save file");
@@ -48,7 +48,8 @@ public class FileDealerTest {
 		}
 
 		assertNotNull(testFile); // Ikke null hvis den klarte å lese filen 
-		assertEquals(person.getSummary(), testFile);
+		assertEquals(person.getSummary(), testFile); // Sjekker at den leste riktig fil
+		//^^ Sammenligner ett day objekt og ett summay objekt, i utgangspunkte ville java sagt at det ikke var like siden det er to forskjellige objekt, men vi overwriter equals metoden og får den til å sjekke at innholde er likt 
 	}
 
     @Test
@@ -59,13 +60,13 @@ public class FileDealerTest {
 		} catch (Exception e) {
 			fail("Could not load saved file");
 		}
-		assertEquals(summary.getDays().get(0).toString(), newFile.getDays().get(0).toString()); // Sjekker om filen 
+		assertEquals(summary.getDays().get(0).toString(), newFile.getDays().get(0).toString()); // Sjekker om filen inneholder det vi forvendtet 
 		
 	}
 
     
     @Test
-	public void testLoadNonExistingFile() {
+	public void testLoadNonExistingFile() { // sjekker at den ikke leser en ikke eksisterende fil 
 		assertThrows(
 				FileNotFoundException.class,
 				() -> summary = fileDealer.readFile("foo"),
@@ -73,7 +74,7 @@ public class FileDealerTest {
 	}
     
     @Test
-	public void testLoadInvalidFile() {
+	public void testLoadInvalidFile() { // sjekker at den ikke klarere leser en fil med feil innhold 
 		assertThrows(
 				Exception.class,
 				() -> summary = fileDealer.readFile("invaledSave"),
